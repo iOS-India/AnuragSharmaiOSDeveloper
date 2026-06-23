@@ -1,35 +1,809 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Welcome to My GitHub Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Senior iOS Engineer</title>
+  <meta name="description" content="Senior iOS Engineer with 10+ years experience. Banking domain expert. Founder of Onvira Technologies." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f4f4f9;
-      margin: 0;
-      padding: 50px;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #070c18;
+      --card: #0d1525;
+      --blue: #38bdf8;
+      --amber: #f59e0b;
+      --green: #34d399;
+      --purple: #a78bfa;
+      --red: #f87171;
+      --text: #e2e8f0;
+      --muted: #6b7fa3;
+      --border: rgba(56,189,248,0.12);
     }
-    h1 {
-      color: #333;
-    }
-    p {
-      color: #555;
-    }
-    a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+    a { color: inherit; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(7,12,24,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+    .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--blue); letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    /* SECTIONS */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .section-sub { font-size: 15px; color: var(--muted); margin-bottom: 3rem; }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #070c18 0%, #0a1428 60%, #0d1c3d 100%); position: relative; overflow: hidden; padding: 6rem 1.5rem; }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+    .hero-glow { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 700px; background: radial-gradient(ellipse, rgba(56,189,248,0.08) 0%, transparent 70%); pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.2); border-radius: 100px; margin-bottom: 2rem; }
+    .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); display: inline-block; }
+    .hero-badge span { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--blue); letter-spacing: 0.08em; }
+    .hero-name { font-size: clamp(2.8rem, 8vw, 5.5rem); font-weight: 700; color: var(--text); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .hero-role { font-family: 'JetBrains Mono', monospace; font-size: clamp(1rem, 3vw, 1.4rem); color: var(--blue); font-weight: 500; margin-bottom: 1.5rem; }
+    .hero-tagline { font-size: clamp(0.95rem, 2vw, 1.1rem); color: var(--muted); max-width: 620px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .hero-stats { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .stat-value { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 600; color: var(--blue); }
+    .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+    .btn-primary { padding: 12px 28px; background: var(--blue); color: #070c18; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; transition: background 0.2s; }
+    .btn-primary:hover { background: #7dd3fc; }
+    .btn-outline { padding: 12px 28px; border: 1px solid rgba(226,232,240,0.2); border-radius: 8px; font-size: 14px; text-decoration: none; color: var(--text); transition: border-color 0.2s; }
+    .btn-outline:hover { border-color: rgba(226,232,240,0.5); }
+
+    /* SKILLS */
+    #skills { background: #070c18; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2rem; }
+    .skill-tag { padding: 4px 12px; background: rgba(13,21,37,0.8); border: 1px solid rgba(56,189,248,0.12); border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); transition: all 0.2s; cursor: default; }
+    .skill-tag:hover { color: var(--blue); border-color: rgba(56,189,248,0.3); background: rgba(56,189,248,0.06); }
+    .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+    .skill-card h3 { font-size: 13px; font-weight: 600; color: var(--blue); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; }
+    .skill-item { margin-bottom: 0.8rem; }
+    .skill-name { font-size: 13px; color: var(--text); display: flex; justify-content: space-between; margin-bottom: 5px; }
+    .skill-pct { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--blue); }
+    .skill-bar-bg { height: 4px; background: rgba(56,189,248,0.1); border-radius: 2px; overflow: hidden; }
+    .skill-bar { height: 100%; background: linear-gradient(90deg, #38bdf8, #0ea5e9); border-radius: 2px; }
+
+    /* EXPERIENCE */
+    #experience { background: linear-gradient(180deg, #070c18 0%, #080f20 100%); }
+    .timeline { position: relative; padding-left: 60px; }
+    .timeline::before { content: ''; position: absolute; left: 14px; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, #38bdf8 0%, rgba(56,189,248,0.1) 100%); }
+    .timeline-item { position: relative; margin-bottom: 2rem; }
+    .timeline-dot { position: absolute; left: -50px; top: 20px; width: 12px; height: 12px; border-radius: 50%; border: 3px solid #070c18; }
+    .exp-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+    .exp-company { font-size: 18px; font-weight: 700; color: var(--text); }
+    .exp-role { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    .exp-duration { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; text-align: right; }
+    .exp-period { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); }
+    .exp-badge { display: inline-block; padding: 2px 10px; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; margin-left: 8px; }
+    .exp-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+    .exp-list li { font-size: 13.5px; color: #94a3b8; line-height: 1.6; display: flex; gap: 8px; }
+    .exp-list li::before { content: '▶'; font-size: 8px; margin-top: 5px; flex-shrink: 0; }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 0.75rem; }
+    .tech-tag { padding: 2px 9px; background: rgba(56,189,248,0.06); border: 1px solid rgba(56,189,248,0.15); border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); }
+
+    /* FOUNDER */
+    #founder { background: linear-gradient(135deg, #0a0f1e 0%, #0d1a2e 50%, #0a1428 100%); }
+    .founder-header { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+    .founder-badge { padding: 4px 14px; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--amber); font-weight: 600; letter-spacing: 0.06em; }
+    .founder-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+    .founder-stat { background: rgba(13,21,37,0.6); border: 1px solid rgba(245,158,11,0.12); border-radius: 10px; padding: 1rem; text-align: center; }
+    .founder-stat-val { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 600; color: var(--text); }
+    .founder-stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
+    .mvp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+    .mvp-card { background: rgba(13,21,37,0.7); border-radius: 12px; padding: 1.25rem; transition: transform 0.2s; }
+    .mvp-card:hover { transform: translateY(-2px); }
+    .mvp-name { font-size: 16px; font-weight: 700; color: var(--text); }
+    .mvp-domain { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; margin-top: 2px; }
+    .mvp-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin: 0.5rem 0 0.75rem; }
+
+    /* PROJECTS */
+    #projects { background: #070c18; }
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; }
+    .project-card { background: rgba(13,21,37,0.7); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s; }
+    .project-card:hover { transform: translateY(-3px); }
+    .project-img { height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 1px solid rgba(56,189,248,0.08); position: relative; }
+    .project-img-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(56,189,248,0.5); margin-top: 8px; letter-spacing: 0.06em; }
+    .project-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+    .project-company { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+    .project-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+    .project-desc { font-size: 13px; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: 0.75rem; }
+    .project-link { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 500; text-decoration: none; transition: opacity 0.2s; }
+    .project-link:hover { opacity: 0.8; }
+
+    /* MILESTONES */
+    #milestones { background: linear-gradient(180deg, #080f20 0%, #070c18 100%); }
+    .milestone-list { display: flex; flex-direction: column; gap: 0; }
+    .milestone-item { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; }
+    .milestone-left { display: flex; flex-direction: column; align-items: center; }
+    .milestone-year { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; margin-bottom: 8px; text-align: center; }
+    .milestone-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; z-index: 1; }
+    .milestone-line { width: 1px; flex: 1; min-height: 24px; margin: 4px 0; background: linear-gradient(180deg, rgba(56,189,248,0.3) 0%, rgba(56,189,248,0.05) 100%); }
+    .milestone-content { padding-top: 26px; padding-bottom: 2rem; }
+    .milestone-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .milestone-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+
+    /* CONTACT */
+    #contact { background: linear-gradient(180deg, #070c18 0%, #060912 100%); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 0.75rem; }
+    .contact-icon { font-size: 18px; flex-shrink: 0; }
+    .contact-label { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1px; }
+    .contact-val { font-size: 14px; color: var(--text); text-decoration: none; }
+    .contact-val:hover { opacity: 0.75; }
+    .avail-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--card); border-radius: 8px; margin-bottom: 0.65rem; }
+    .avail-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .avail-label { font-size: 13.5px; font-weight: 500; }
+    .footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer span { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3a4a63; }
+
+    @media (max-width: 768px) {
+      section { padding: 4rem 1rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .timeline { padding-left: 40px; }
     }
   </style>
 </head>
 <body>
-  <h1>Hello, World!</h1>
-  <p>This is my first GitHub Page 🚀</p>
-  <p>Check out my <a href="https://github.com/username">GitHub profile</a>.</p>
+
+<nav>
+  <span class="nav-logo">&lt;iOS.dev /&gt;</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#founder">Onvira</a>
+    <a href="#projects">Projects</a>
+    <a href="#milestones">Milestones</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-badge">
+    <span class="hero-dot"></span>
+    <span>iOS Engineer · 10+ Years · Open to Opportunities</span>
+  </div>
+  <h1 class="hero-name">Your Name</h1>
+  <p class="hero-role">Senior iOS Engineer &amp; Framework Architect</p>
+  <p class="hero-tagline">Architecting high-performance iOS applications and frameworks for global financial institutions. 8 years banking domain. 5 MVPs launched as founder of <strong style="color: #f59e0b">Onvira Technologies</strong>.</p>
+  <div class="hero-stats">
+    <div><div class="stat-value">10+</div><div class="stat-label">Years iOS</div></div>
+    <div><div class="stat-value">8</div><div class="stat-label">Years Banking</div></div>
+    <div><div class="stat-value">3</div><div class="stat-label">Global Clients</div></div>
+    <div><div class="stat-value">5</div><div class="stat-label">MVPs Launched</div></div>
+  </div>
+  <div class="hero-ctas">
+    <a href="#projects" class="btn-primary">View Projects</a>
+    <a href="#contact" class="btn-outline">Get In Touch</a>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <span class="section-label">// technical_expertise</span>
+    <h2 class="section-title">Skills &amp; Expertise</h2>
+
+    <div class="skill-grid">
+      <div class="skill-card">
+        <h3>⌨ Core Languages</h3>
+        
+        <div class="skill-item">
+          <div class="skill-name"><span>Swift</span><span class="skill-pct">99%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 99%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>SwiftUI</span><span class="skill-pct">98%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 98%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Objective-C</span><span class="skill-pct">92%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>React Native</span><span class="skill-pct">78%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 78%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>React / JS</span><span class="skill-pct">72%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 72%"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3> iOS Expertise</h3>
+        
+        <div class="skill-item">
+          <div class="skill-name"><span>Frameworks & SDKs</span><span class="skill-pct">99%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 99%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Swift Packages</span><span class="skill-pct">98%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 98%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>xcFrameworks</span><span class="skill-pct">97%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 97%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>UIKit / AppKit</span><span class="skill-pct">95%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>SwiftData / CloudKit</span><span class="skill-pct">92%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 92%"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>🏦 Domain &amp; Security</h3>
+        
+        <div class="skill-item">
+          <div class="skill-name"><span>Banking & Finance</span><span class="skill-pct">96%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 96%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Payment Systems</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>App Security</span><span class="skill-pct">92%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Secure Communication</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Identity & Credit</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 85%"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>⚙ Tools &amp; Practices</h3>
+        
+        <div class="skill-item">
+          <div class="skill-name"><span>Agile / Scrum</span><span class="skill-pct">95%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>TDD / BDD</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Jenkins / CI-CD</span><span class="skill-pct">88%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Figma</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Confluence / Jira</span><span class="skill-pct">88%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 88%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 2.5rem">
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 1rem; letter-spacing: 0.08em; text-transform: uppercase;">// full_tech_stack</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Swift</span><span class="skill-tag">SwiftUI</span><span class="skill-tag">Objective-C</span><span class="skill-tag">Java</span><span class="skill-tag">Kotlin</span><span class="skill-tag">React</span><span class="skill-tag">React Native</span><span class="skill-tag">xcFramework</span><span class="skill-tag">Swift Package Manager</span><span class="skill-tag">CocoaPods</span><span class="skill-tag">UIKit</span><span class="skill-tag">AppKit</span><span class="skill-tag">CoreData</span><span class="skill-tag">SwiftData</span><span class="skill-tag">CloudKit</span><span class="skill-tag">Firebase</span><span class="skill-tag">Combine</span><span class="skill-tag">async/await</span><span class="skill-tag">REST APIs</span><span class="skill-tag">GraphQL</span><span class="skill-tag">SSL Pinning</span><span class="skill-tag">Keychain</span><span class="skill-tag">Biometrics</span><span class="skill-tag">MVVM</span><span class="skill-tag">Clean Architecture</span><span class="skill-tag">SOLID</span><span class="skill-tag">TDD</span><span class="skill-tag">BDD</span><span class="skill-tag">XCTest</span><span class="skill-tag">Figma</span><span class="skill-tag">Jenkins</span><span class="skill-tag">Fastlane</span><span class="skill-tag">Git</span><span class="skill-tag">Confluence</span><span class="skill-tag">Jira</span><span class="skill-tag">Agile</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <span class="section-label">// professional_experience</span>
+    <h2 class="section-title">Work Experience</h2>
+    <p class="section-sub">8+ years of deep banking &amp; fintech domain expertise across global financial institutions.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background: #00aeef; box-shadow: 0 0 12px #00aeef60;"></div>
+        <div class="exp-card" style="border-color: rgba(0,174,239,0.15)">
+          <div class="exp-header">
+            <div>
+              <span class="exp-company">🏦 Barclays</span>
+              <span class="exp-badge" style="background: rgba(0,174,239,0.1); border: 1px solid rgba(0,174,239,0.25); color: #00aeef;">Banking</span>
+              <div class="exp-role">Senior iOS Engineer</div>
+            </div>
+            <div>
+              <div class="exp-duration" style="color: #00aeef">3.5+ Years</div>
+              <div class="exp-period">2020 – 2023</div>
+            </div>
+          </div>
+          <ul class="exp-list" style="color: #94a3b8">
+            <li style="--c: #00aeef">Architected core iOS banking SDK used by 2M+ retail customers</li>
+            <li>Led migration of legacy Objective-C codebase to Swift with zero regression</li>
+            <li>Built secure biometric authentication framework with SSL pinning &amp; certificate validation</li>
+            <li>Developed modular xcFramework for reusable banking components across 3 product lines</li>
+            <li>Implemented PSD2 open banking compliance features for EU market</li>
+            <li>Mentored team of 4 junior iOS developers</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">Swift</span><span class="tech-tag">Objective-C</span><span class="tech-tag">xcFramework</span><span class="tech-tag">Keychain</span><span class="tech-tag">Biometrics</span><span class="tech-tag">SSL Pinning</span><span class="tech-tag">CocoaPods</span><span class="tech-tag">Jenkins</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item" style="margin-top: 1.5rem">
+        <div class="timeline-dot" style="background: #f59e0b; box-shadow: 0 0 12px rgba(245,158,11,0.4);"></div>
+        <div class="exp-card" style="border-color: rgba(245,158,11,0.15)">
+          <div class="exp-header">
+            <div>
+              <span class="exp-company">💳 Global Payments</span>
+              <span class="exp-badge" style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); color: #f59e0b;">FinTech / Payments</span>
+              <div class="exp-role">iOS Developer — Payments Platform</div>
+            </div>
+            <div>
+              <div class="exp-duration" style="color: #f59e0b">2+ Years</div>
+              <div class="exp-period">2018 – 2020</div>
+            </div>
+          </div>
+          <ul class="exp-list">
+            <li>Built end-to-end payment SDK for iOS merchants handling PCI-DSS compliant card tokenisation</li>
+            <li>Developed Swift Package for unified payment gateway integration across iOS apps</li>
+            <li>Implemented NFC/contactless payment flows and Apple Pay integration</li>
+            <li>Created automated BDD test suite reducing QA cycle time by 40%</li>
+            <li>Integrated 3DS2 authentication for European card transactions</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">Swift</span><span class="tech-tag">SwiftUI</span><span class="tech-tag">NFC</span><span class="tech-tag">Apple Pay</span><span class="tech-tag">PassKit</span><span class="tech-tag">Swift Package Manager</span><span class="tech-tag">XCTest</span><span class="tech-tag">BDD</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item" style="margin-top: 1.5rem">
+        <div class="timeline-dot" style="background: #34d399; box-shadow: 0 0 12px rgba(52,211,153,0.4);"></div>
+        <div class="exp-card" style="border-color: rgba(52,211,153,0.15)">
+          <div class="exp-header">
+            <div>
+              <span class="exp-company">🔐 TransUnion</span>
+              <span class="exp-badge" style="background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); color: #34d399;">Credit &amp; Identity</span>
+              <div class="exp-role">iOS Engineer — Identity &amp; Credit</div>
+            </div>
+            <div>
+              <div class="exp-duration" style="color: #34d399">2.5 Years</div>
+              <div class="exp-period">2015 – 2018</div>
+            </div>
+          </div>
+          <ul class="exp-list">
+            <li>Developed CreditView iOS application for real-time credit score monitoring</li>
+            <li>Built identity verification SDK with document scanning and liveness detection</li>
+            <li>Implemented GDPR-compliant data handling and on-device data encryption</li>
+            <li>Led architecture decision to adopt MVVM-C pattern across the iOS team</li>
+            <li>Built reusable chart library for credit score trend visualisation</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">Swift</span><span class="tech-tag">Objective-C</span><span class="tech-tag">CoreData</span><span class="tech-tag">Vision Framework</span><span class="tech-tag">AVFoundation</span><span class="tech-tag">MVVM-C</span><span class="tech-tag">Jenkins</span><span class="tech-tag">Agile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="container">
+    <span class="section-label" style="color: #f59e0b;">// founder_journey</span>
+    <div class="founder-header">
+      <h2 class="section-title" style="margin-bottom: 0">Onvira Technologies</h2>
+      <span class="founder-badge">FOUNDER · STARTUP</span>
+    </div>
+    <p class="section-sub">A product-based startup I founded to turn domain expertise into real-world SwiftUI applications. From concept to App Store — 5 MVPs across fintech, health, security, and payments.</p>
+
+    <div class="founder-stats">
+      
+      <div class="founder-stat">
+        <div class="founder-stat-val">5</div>
+        <div class="founder-stat-label">MVPs Launched</div>
+      </div>
+      <div class="founder-stat">
+        <div class="founder-stat-val">SwiftUI</div>
+        <div class="founder-stat-label">Primary Stack</div>
+      </div>
+      <div class="founder-stat">
+        <div class="founder-stat-val">100%</div>
+        <div class="founder-stat-label">Native iOS</div>
+      </div>
+      <div class="founder-stat">
+        <div class="founder-stat-val">Product</div>
+        <div class="founder-stat-label">Based Company</div>
+      </div>
+      <div class="founder-stat">
+        <div class="founder-stat-val">Founding</div>
+        <div class="founder-stat-label">Team Member</div>
+      </div>
+      <div class="founder-stat">
+        <div class="founder-stat-val">2023–</div>
+        <div class="founder-stat-label">Ongoing</div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 1.25rem;">Products Built</h3>
+    <div class="mvp-grid">
+      
+      <div class="mvp-card" style="border: 1px solid #38bdf820">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <div>
+            <div class="mvp-name">FinanceFlow</div>
+            <div class="mvp-domain" style="color: #38bdf8">Personal Finance</div>
+          </div>
+          <span style="padding: 2px 10px; background: #38bdf812; border: 1px solid #38bdf830; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #38bdf8;">Live</span>
+        </div>
+        <p class="mvp-desc">AI-powered personal finance tracker with SwiftUI charts and iCloud sync via CloudKit.</p>
+        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">SwiftData</span><span class="tech-tag">CloudKit</span><span class="tech-tag">Swift Charts</span></div>
+      </div>
+      <div class="mvp-card" style="border: 1px solid #34d39920">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <div>
+            <div class="mvp-name">HealthVault</div>
+            <div class="mvp-domain" style="color: #34d399">HealthTech</div>
+          </div>
+          <span style="padding: 2px 10px; background: #34d39912; border: 1px solid #34d39930; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #34d399;">Live</span>
+        </div>
+        <p class="mvp-desc">Encrypted health records manager with HealthKit integration and biometric lock.</p>
+        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">HealthKit</span><span class="tech-tag">CryptoKit</span><span class="tech-tag">SwiftData</span></div>
+      </div>
+      <div class="mvp-card" style="border: 1px solid #f59e0b20">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <div>
+            <div class="mvp-name">PayLink</div>
+            <div class="mvp-domain" style="color: #f59e0b">Payments</div>
+          </div>
+          <span style="padding: 2px 10px; background: #f59e0b12; border: 1px solid #f59e0b30; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f59e0b;">Live</span>
+        </div>
+        <p class="mvp-desc">P2P payment request app with QR code generation and split-bill calculator.</p>
+        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Firebase</span><span class="tech-tag">AVFoundation</span><span class="tech-tag">PassKit</span></div>
+      </div>
+      <div class="mvp-card" style="border: 1px solid #a78bfa20">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <div>
+            <div class="mvp-name">LoanLens</div>
+            <div class="mvp-domain" style="color: #a78bfa">Banking / Credit</div>
+          </div>
+          <span style="padding: 2px 10px; background: #a78bfa12; border: 1px solid #a78bfa30; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #a78bfa;">Live</span>
+        </div>
+        <p class="mvp-desc">Loan comparison engine with amortisation schedules and eligibility insights.</p>
+        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">CloudKit</span><span class="tech-tag">Swift Charts</span><span class="tech-tag">Algorithms</span></div>
+      </div>
+      <div class="mvp-card" style="border: 1px solid #f8717120">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <div>
+            <div class="mvp-name">SecureVault</div>
+            <div class="mvp-domain" style="color: #f87171">Security</div>
+          </div>
+          <span style="padding: 2px 10px; background: #f8717112; border: 1px solid #f8717130; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f87171;">Live</span>
+        </div>
+        <p class="mvp-desc">Enterprise-grade secrets manager with zero-knowledge on-device encryption.</p>
+        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">CryptoKit</span><span class="tech-tag">Keychain</span><span class="tech-tag">LocalAuth</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <span class="section-label">// selected_projects</span>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub">Startup MVPs and enterprise-grade banking infrastructure — built end-to-end.</p>
+
+    <div class="project-grid">
+      
+      <div class="project-card" style="border: 1px solid #38bdf818">
+        <div class="project-img" style="background: linear-gradient(135deg, #38bdf810 0%, rgba(13,21,37,0.5) 100%)">
+          <div style="background-image: radial-gradient(#38bdf815 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
+          <span style="font-size: 24px; position: relative; opacity: 0.4">📱</span>
+          <span class="project-img-label">screenshot_placeholder</span>
+          <span style="position: absolute; top: 10px; left: 12px; padding: 3px 10px; background: #38bdf815; border: 1px solid #38bdf830; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #38bdf8;">FinTech</span>
+        </div>
+        <div class="project-body">
+          <div class="project-company">Onvira Technologies</div>
+          <div class="project-name">FinanceFlow</div>
+          <p class="project-desc">A SwiftUI-first personal finance tracker with AI-powered categorisation, custom budget goals, SwiftData persistence, and iCloud sync via CloudKit.</p>
+          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">SwiftUI</span><span class="tech-tag">SwiftData</span><span class="tech-tag">CloudKit</span><span class="tech-tag">Swift Charts</span></div>
+          <a href="https://apps.apple.com" target="_blank" class="project-link" style="background: #38bdf812; border: 1px solid #38bdf825; color: #38bdf8">↗ App Store</a>
+        </div>
+      </div>
+      <div class="project-card" style="border: 1px solid #34d39918">
+        <div class="project-img" style="background: linear-gradient(135deg, #34d39910 0%, rgba(13,21,37,0.5) 100%)">
+          <div style="background-image: radial-gradient(#34d39915 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
+          <span style="font-size: 24px; position: relative; opacity: 0.4">📱</span>
+          <span class="project-img-label">screenshot_placeholder</span>
+          <span style="position: absolute; top: 10px; left: 12px; padding: 3px 10px; background: #34d39915; border: 1px solid #34d39930; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #34d399;">HealthTech</span>
+        </div>
+        <div class="project-body">
+          <div class="project-company">Onvira Technologies</div>
+          <div class="project-name">HealthVault</div>
+          <p class="project-desc">Encrypted personal health records manager with HealthKit integration. AES-256 encryption, biometric auth, export-to-PDF.</p>
+          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">SwiftUI</span><span class="tech-tag">HealthKit</span><span class="tech-tag">CryptoKit</span><span class="tech-tag">PDFKit</span></div>
+          <a href="https://apps.apple.com" target="_blank" class="project-link" style="background: #34d39912; border: 1px solid #34d39925; color: #34d399">↗ App Store</a>
+        </div>
+      </div>
+      <div class="project-card" style="border: 1px solid #f59e0b18">
+        <div class="project-img" style="background: linear-gradient(135deg, #f59e0b10 0%, rgba(13,21,37,0.5) 100%)">
+          <div style="background-image: radial-gradient(#f59e0b15 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
+          <span style="font-size: 24px; position: relative; opacity: 0.4">📱</span>
+          <span class="project-img-label">screenshot_placeholder</span>
+          <span style="position: absolute; top: 10px; left: 12px; padding: 3px 10px; background: #f59e0b15; border: 1px solid #f59e0b30; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f59e0b;">Payments</span>
+        </div>
+        <div class="project-body">
+          <div class="project-company">Onvira Technologies</div>
+          <div class="project-name">PayLink</div>
+          <p class="project-desc">Peer-to-peer payment request app with QR code generation, split-bill calculator, and Firebase real-time status.</p>
+          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Firebase</span><span class="tech-tag">Core Image</span><span class="tech-tag">PassKit</span></div>
+          <a href="https://apps.apple.com" target="_blank" class="project-link" style="background: #f59e0b12; border: 1px solid #f59e0b25; color: #f59e0b">↗ App Store</a>
+        </div>
+      </div>
+      <div class="project-card" style="border: 1px solid #f8717118">
+        <div class="project-img" style="background: linear-gradient(135deg, #f8717110 0%, rgba(13,21,37,0.5) 100%)">
+          <div style="background-image: radial-gradient(#f8717115 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
+          <span style="font-size: 24px; position: relative; opacity: 0.4">📱</span>
+          <span class="project-img-label">screenshot_placeholder</span>
+          <span style="position: absolute; top: 10px; left: 12px; padding: 3px 10px; background: #f8717115; border: 1px solid #f8717130; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f87171;">Security</span>
+        </div>
+        <div class="project-body">
+          <div class="project-company">Onvira Technologies</div>
+          <div class="project-name">SecureVault</div>
+          <p class="project-desc">Enterprise-grade password and secrets manager. Zero-knowledge on-device encryption, AutoFill extension, breach detection.</p>
+          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">SwiftUI</span><span class="tech-tag">CryptoKit</span><span class="tech-tag">Keychain</span><span class="tech-tag">LocalAuth</span></div>
+          <a href="https://apps.apple.com" target="_blank" class="project-link" style="background: #f8717112; border: 1px solid #f8717125; color: #f87171">↗ App Store</a>
+        </div>
+      </div>
+      <div class="project-card" style="border: 1px solid #a78bfa18">
+        <div class="project-img" style="background: linear-gradient(135deg, #a78bfa10 0%, rgba(13,21,37,0.5) 100%)">
+          <div style="background-image: radial-gradient(#a78bfa15 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
+          <span style="font-size: 24px; position: relative; opacity: 0.4">📱</span>
+          <span class="project-img-label">screenshot_placeholder</span>
+          <span style="position: absolute; top: 10px; left: 12px; padding: 3px 10px; background: #a78bfa15; border: 1px solid #a78bfa30; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #a78bfa;">Banking / Credit</span>
+        </div>
+        <div class="project-body">
+          <div class="project-company">Onvira Technologies</div>
+          <div class="project-name">LoanLens</div>
+          <p class="project-desc">Loan comparison and eligibility engine with amortisation schedules and push notification rate alerts.</p>
+          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">SwiftUI</span><span class="tech-tag">CloudKit</span><span class="tech-tag">Swift Charts</span><span class="tech-tag">Algorithms</span></div>
+          <a href="https://apps.apple.com" target="_blank" class="project-link" style="background: #a78bfa12; border: 1px solid #a78bfa25; color: #a78bfa">↗ App Store</a>
+        </div>
+      </div>
+      <div class="project-card" style="border: 1px solid #00aeef18">
+        <div class="project-img" style="background: linear-gradient(135deg, #00aeef10 0%, rgba(13,21,37,0.5) 100%)">
+          <div style="background-image: radial-gradient(#00aeef15 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
+          <span style="font-size: 24px; position: relative; opacity: 0.4">📱</span>
+          <span class="project-img-label">screenshot_placeholder</span>
+          <span style="position: absolute; top: 10px; left: 12px; padding: 3px 10px; background: #00aeef15; border: 1px solid #00aeef30; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #00aeef;">Banking SDK</span>
+        </div>
+        <div class="project-body">
+          <div class="project-company">Barclays</div>
+          <div class="project-name">Barclays Mobile SDK</div>
+          <p class="project-desc">Core iOS banking SDK serving 2M+ retail customers. Modular xcFramework architecture enabling feature toggling across product lines.</p>
+          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">Swift</span><span class="tech-tag">xcFramework</span><span class="tech-tag">Biometrics</span><span class="tech-tag">SSL Pinning</span></div>
+          <span style="padding: 7px 14px; background: rgba(56,189,248,0.04); border: 1px solid rgba(56,189,248,0.08); border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted);">Internal / NDA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MILESTONES -->
+<section id="milestones">
+  <div class="container">
+    <span class="section-label">// career_timeline</span>
+    <h2 class="section-title">Milestones</h2>
+    <p class="section-sub">10 years of continuous growth — from UIKit to xcFrameworks to founding a startup.</p>
+
+    <div class="milestone-list">
+      
+      <div class="milestone-item">
+        <div class="milestone-left">
+          <div class="milestone-year" style="color: #6b7fa3">2014</div>
+          <div class="milestone-icon" style="background: #6b7fa315; border: 2px solid #6b7fa340">🚀</div>
+          <div class="milestone-line"></div>
+        </div>
+        <div class="milestone-content">
+          <div class="milestone-title">Started iOS Career</div>
+          <p class="milestone-desc">Began professional iOS development with Objective-C, deep-dived into UIKit and Core frameworks.</p>
+        </div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-left">
+          <div class="milestone-year" style="color: #34d399">2015</div>
+          <div class="milestone-icon" style="background: #34d39915; border: 2px solid #34d39940">🏦</div>
+          <div class="milestone-line"></div>
+        </div>
+        <div class="milestone-content">
+          <div class="milestone-title">Joined TransUnion — Banking Entry</div>
+          <p class="milestone-desc">First major banking client — built credit monitoring features and identity verification SDK for 1M+ users.</p>
+        </div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-left">
+          <div class="milestone-year" style="color: #38bdf8">2017</div>
+          <div class="milestone-icon" style="background: #38bdf815; border: 2px solid #38bdf840">⚡</div>
+          <div class="milestone-line"></div>
+        </div>
+        <div class="milestone-content">
+          <div class="milestone-title">Swift Expert — Full Migration Lead</div>
+          <p class="milestone-desc">Led complete Swift migration for legacy Objective-C codebase. Zero regression, 30% performance improvement.</p>
+        </div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-left">
+          <div class="milestone-year" style="color: #f59e0b">2018</div>
+          <div class="milestone-icon" style="background: #f59e0b15; border: 2px solid #f59e0b40">💳</div>
+          <div class="milestone-line"></div>
+        </div>
+        <div class="milestone-content">
+          <div class="milestone-title">Global Payments — Payment SDK Architect</div>
+          <p class="milestone-desc">Designed and built PCI-DSS compliant payment SDK. Apple Pay, NFC, and 3DS2 authentication for EU markets.</p>
+        </div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-left">
+          <div class="milestone-year" style="color: #a78bfa">2019</div>
+          <div class="milestone-icon" style="background: #a78bfa15; border: 2px solid #a78bfa40">📦</div>
+          <div class="milestone-line"></div>
+        </div>
+        <div class="milestone-content">
+          <div class="milestone-title">Published First Swift Package</div>
+          <p class="milestone-desc">Open-sourced an internal networking utility as a Swift Package — 200+ GitHub stars in the first month.</p>
+        </div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-left">
+          <div class="milestone-year" style="color: #00aeef">2020</div>
+          <div class="milestone-icon" style="background: #00aeef15; border: 2px solid #00aeef40">🏅</div>
+          <div class="milestone-line"></div>
+        </div>
+        <div class="milestone-content">
+          <div class="milestone-title">Barclays — Senior Engineer</div>
+          <p class="milestone-desc">Joined Barclays as Senior iOS Engineer. Promoted to tech lead within 12 months, managing a team of 6.</p>
+        </div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-left">
+          <div class="milestone-year" style="color: #38bdf8">2021</div>
+          <div class="milestone-icon" style="background: #38bdf815; border: 2px solid #38bdf840">🏗</div>
+          <div class="milestone-line"></div>
+        </div>
+        <div class="milestone-content">
+          <div class="milestone-title">Delivered xcFramework Architecture</div>
+          <p class="milestone-desc">Architected Barclays' modular xcFramework system — enabling 3 product teams to ship independently.</p>
+        </div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-left">
+          <div class="milestone-year" style="color: #f87171">2022</div>
+          <div class="milestone-icon" style="background: #f8717115; border: 2px solid #f8717140">🔐</div>
+          <div class="milestone-line"></div>
+        </div>
+        <div class="milestone-content">
+          <div class="milestone-title">App Security Specialisation</div>
+          <p class="milestone-desc">Implemented SSL pinning, OWASP standards, and secure enclave usage across Barclays apps.</p>
+        </div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-left">
+          <div class="milestone-year" style="color: #f59e0b">2023</div>
+          <div class="milestone-icon" style="background: #f59e0b15; border: 2px solid #f59e0b40">🌟</div>
+          <div class="milestone-line"></div>
+        </div>
+        <div class="milestone-content">
+          <div class="milestone-title">Founded Onvira Technologies</div>
+          <p class="milestone-desc">Left corporate employment to found Onvira Technologies — a product-based iOS startup. 5 MVPs in year one.</p>
+        </div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-left">
+          <div class="milestone-year" style="color: #34d399">2024</div>
+          <div class="milestone-icon" style="background: #34d39915; border: 2px solid #34d39940">📱</div>
+          
+        </div>
+        <div class="milestone-content">
+          <div class="milestone-title">SwiftUI-First Product Studio</div>
+          <p class="milestone-desc">Onvira expanded into HealthTech, Security, and Payments verticals. Recognised SwiftUI-first iOS studio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <span class="section-label">// get_in_touch</span>
+    <h2 class="section-title" style="text-align: center">Let's Connect</h2>
+    <p style="font-size: 15px; color: var(--muted); text-align: center; margin-bottom: 3rem;">Open to senior iOS engineering roles, banking &amp; fintech consulting, and Swift framework architecture opportunities.</p>
+
+    <div class="contact-grid">
+      <div>
+        <h3 style="font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem">Contact</h3>
+        <div class="contact-item">
+          <span class="contact-icon">✉</span>
+          <div>
+            <div class="contact-label">Email</div>
+            <a href="mailto:your@email.com" class="contact-val" style="color: #38bdf8">your@email.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">💼</span>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <a href="https://linkedin.com" target="_blank" class="contact-val" style="color: #0ea5e9">linkedin.com/in/yourprofile</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">⚡</span>
+          <div>
+            <div class="contact-label">GitHub</div>
+            <a href="https://github.com" target="_blank" class="contact-val" style="color: #e2e8f0">github.com/yourusername</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div>
+            <div class="contact-label">Location</div>
+            <span class="contact-val">United Kingdom</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem">Available For</h3>
+        
+        <div class="avail-item" style="border: 1px solid rgba(52,211,153,0.12)">
+          <span class="avail-dot" style="background: #34d399; box-shadow: 0 0 6px #34d39980"></span>
+          <span class="avail-label" style="color: #e2e8f0">Senior iOS Engineering</span>
+        </div>
+        <div class="avail-item" style="border: 1px solid rgba(52,211,153,0.12)">
+          <span class="avail-dot" style="background: #34d399; box-shadow: 0 0 6px #34d39980"></span>
+          <span class="avail-label" style="color: #e2e8f0">Framework / SDK Architecture</span>
+        </div>
+        <div class="avail-item" style="border: 1px solid rgba(52,211,153,0.12)">
+          <span class="avail-dot" style="background: #34d399; box-shadow: 0 0 6px #34d39980"></span>
+          <span class="avail-label" style="color: #e2e8f0">Banking & FinTech Consulting</span>
+        </div>
+        <div class="avail-item" style="border: 1px solid rgba(52,211,153,0.12)">
+          <span class="avail-dot" style="background: #34d399; box-shadow: 0 0 6px #34d39980"></span>
+          <span class="avail-label" style="color: #e2e8f0">Swift Package Development</span>
+        </div>
+        <div class="avail-item" style="border: 1px solid rgba(52,211,153,0.12)">
+          <span class="avail-dot" style="background: #34d399; box-shadow: 0 0 6px #34d39980"></span>
+          <span class="avail-label" style="color: #e2e8f0">Technical Leadership</span>
+        </div>
+        <div class="avail-item" style="border: 1px solid rgba(56,189,248,0.06)">
+          <span class="avail-dot" style="background: #3a4a63; "></span>
+          <span class="avail-label" style="color: #3a4a63">Android / Cross-platform</span>
+        </div>
+        <a href="mailto:your@email.com" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 1.25rem; padding: 14px 24px; background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.3); border-radius: 10px; color: #38bdf8; text-decoration: none; font-size: 14px; font-weight: 600; transition: all 0.2s">✉ Send a Message</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span style="color: #38bdf8">&lt;iOS.dev /&gt;</span>
+      <span>© 2026 · Built with SwiftUI dedication &amp; React finesse</span>
+      <span>Onvira Technologies</span>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
-
