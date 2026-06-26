@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name — Senior iOS Engineer</title>
+  <title>Anurag Sharma — Senior iOS Engineer</title>
   <meta name="description" content="Senior iOS Engineer with 10+ years experience. Banking domain expert. Founder of Onvira Technologies." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,18 +21,40 @@
       --text: #e2e8f0;
       --muted: #6b7fa3;
       --border: rgba(56,189,248,0.12);
+      --nav-bg: rgba(7,12,24,0.92);
     }
+
+    /* LIGHT MODE */
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --blue: #0284c7;
+      --amber: #d97706;
+      --green: #059669;
+      --purple: #7c3aed;
+      --red: #dc2626;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: rgba(2,132,199,0.15);
+      --nav-bg: rgba(248,250,252,0.92);
+    }
+
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; transition: background 0.3s, color 0.3s; }
     a { color: inherit; }
 
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(7,12,24,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: var(--nav-bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
     .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--blue); letter-spacing: 0.05em; }
     .nav-links { display: flex; gap: 1.75rem; align-items: center; }
     .nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--blue); }
-    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    /* THEME TOGGLE */
+    .theme-toggle { background: none; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); transition: all 0.2s; font-family: 'JetBrains Mono', monospace; }
+    .theme-toggle:hover { border-color: var(--blue); color: var(--blue); }
+
+    @media (max-width: 768px) { .nav-links a { display: none; } }
 
     /* SECTIONS */
     section { padding: 5rem 1.5rem; }
@@ -43,6 +65,7 @@
 
     /* HERO */
     #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #070c18 0%, #0a1428 60%, #0d1c3d 100%); position: relative; overflow: hidden; padding: 6rem 1.5rem; }
+    [data-theme="light"] #hero { background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 60%, #bae6fd 100%); }
     .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
     .hero-glow { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 700px; background: radial-gradient(ellipse, rgba(56,189,248,0.08) 0%, transparent 70%); pointer-events: none; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.2); border-radius: 100px; margin-bottom: 2rem; }
@@ -55,18 +78,22 @@
     .stat-value { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 600; color: var(--blue); }
     .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
     .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
-    .btn-primary { padding: 12px 28px; background: var(--blue); color: #070c18; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; transition: background 0.2s; }
+    .btn-primary { padding: 12px 28px; background: var(--blue); color: #ffffff; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; transition: background 0.2s; }
+    [data-theme="light"] .btn-primary { color: #ffffff; }
     .btn-primary:hover { background: #7dd3fc; }
     .btn-outline { padding: 12px 28px; border: 1px solid rgba(226,232,240,0.2); border-radius: 8px; font-size: 14px; text-decoration: none; color: var(--text); transition: border-color 0.2s; }
     .btn-outline:hover { border-color: rgba(226,232,240,0.5); }
 
     /* SKILLS */
     #skills { background: #070c18; }
+    [data-theme="light"] #skills { background: #f1f5f9; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2rem; }
     .skill-tag { padding: 4px 12px; background: rgba(13,21,37,0.8); border: 1px solid rgba(56,189,248,0.12); border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); transition: all 0.2s; cursor: default; }
+    [data-theme="light"] .skill-tag { background: rgba(241,245,249,0.8); }
     .skill-tag:hover { color: var(--blue); border-color: rgba(56,189,248,0.3); background: rgba(56,189,248,0.06); }
     .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
     .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+    [data-theme="light"] .skill-card { box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
     .skill-card h3 { font-size: 13px; font-weight: 600; color: var(--blue); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; }
     .skill-item { margin-bottom: 0.8rem; }
     .skill-name { font-size: 13px; color: var(--text); display: flex; justify-content: space-between; margin-bottom: 5px; }
@@ -76,6 +103,7 @@
 
     /* EXPERIENCE */
     #experience { background: linear-gradient(180deg, #070c18 0%, #080f20 100%); }
+    [data-theme="light"] #experience { background: linear-gradient(180deg, #f8fafc 0%, #e0f2fe 100%); }
     .timeline { position: relative; padding-left: 60px; }
     .timeline::before { content: ''; position: absolute; left: 14px; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, #38bdf8 0%, rgba(56,189,248,0.1) 100%); }
     .timeline-item { position: relative; margin-bottom: 2rem; }
@@ -95,26 +123,39 @@
 
     /* FOUNDER */
     #founder { background: linear-gradient(135deg, #0a0f1e 0%, #0d1a2e 50%, #0a1428 100%); }
+    [data-theme="light"] #founder { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%); }
     .founder-header { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
     .founder-badge { padding: 4px 14px; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--amber); font-weight: 600; letter-spacing: 0.06em; }
     .founder-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
     .founder-stat { background: rgba(13,21,37,0.6); border: 1px solid rgba(245,158,11,0.12); border-radius: 10px; padding: 1rem; text-align: center; }
+    [data-theme="light"] .founder-stat { background: rgba(255,255,255,0.7); border: 1px solid rgba(245,158,11,0.2); }
     .founder-stat-val { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 600; color: var(--text); }
     .founder-stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
     .mvp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
     .mvp-card { background: rgba(13,21,37,0.7); border-radius: 12px; padding: 1.25rem; transition: transform 0.2s; }
+    [data-theme="light"] .mvp-card { background: #ffffff; border: 1px solid rgba(245,158,11,0.15); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
     .mvp-card:hover { transform: translateY(-2px); }
     .mvp-name { font-size: 16px; font-weight: 700; color: var(--text); }
     .mvp-domain { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; margin-top: 2px; }
     .mvp-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin: 0.5rem 0 0.75rem; }
+    .mvp-link { display: inline-block; margin-top: 0.75rem; padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .founder-highlight { background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.15); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0 2rem; }
+    [data-theme="light"] .founder-highlight { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25); }
 
     /* PROJECTS */
     #projects { background: #070c18; }
+    [data-theme="light"] #projects { background: #f1f5f9; }
     .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; }
-    .project-card { background: rgba(13,21,37,0.7); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s; }
+    .project-card { background: rgba(13,21,37,0.7); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s; border: 1px solid transparent; }
+    [data-theme="light"] .project-card { background: #ffffff; border: 1px solid rgba(2,132,199,0.12); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
     .project-card:hover { transform: translateY(-3px); }
+    [data-theme="light"] .project-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     .project-img { height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 1px solid rgba(56,189,248,0.08); position: relative; }
+    [data-theme="light"] .project-img { border-bottom: 1px solid rgba(2,132,199,0.1); background: rgba(241,245,249,0.6) !important; }
     .project-img-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(56,189,248,0.5); margin-top: 8px; letter-spacing: 0.06em; }
+    [data-theme="light"] .project-img-label { color: rgba(2,132,199,0.7); }
+    .project-category-badge { position: absolute; top: 10px; left: 12px; padding: 3px 10px; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+    [data-theme="light"] .project-category-badge { background: rgba(255,255,255,0.9) !important; border: 1px solid rgba(0,0,0,0.1) !important; font-weight: 600; }
     .project-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
     .project-company { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
     .project-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
@@ -124,6 +165,7 @@
 
     /* MILESTONES */
     #milestones { background: linear-gradient(180deg, #080f20 0%, #070c18 100%); }
+    [data-theme="light"] #milestones { background: linear-gradient(180deg, #e0f2fe 0%, #f8fafc 100%); }
     .milestone-list { display: flex; flex-direction: column; gap: 0; }
     .milestone-item { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; }
     .milestone-left { display: flex; flex-direction: column; align-items: center; }
@@ -134,8 +176,80 @@
     .milestone-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
     .milestone-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
 
+    /* EDUCATION */
+    #education { background: linear-gradient(180deg, #080f20 0%, #070c18 100%); }
+    [data-theme="light"] #education { background: linear-gradient(180deg, #f1f5f9 0%, #e0f2fe 100%); }
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .edu-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; transition: transform 0.2s; }
+    [data-theme="light"] .edu-card { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .edu-card:hover { transform: translateY(-3px); }
+    .edu-header { display: flex; gap: 1rem; margin-bottom: 1rem; }
+    .edu-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+    .edu-info { flex: 1; }
+    .edu-degree { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+    .edu-institute { font-size: 13px; color: var(--blue); margin-bottom: 4px; font-weight: 500; }
+    .edu-duration { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+    .edu-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+    .edu-highlights { display: flex; flex-wrap: wrap; gap: 6px; }
+    .edu-highlight { padding: 4px 10px; background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.15); border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6366f1; font-weight: 500; }
+    [data-theme="light"] .edu-highlight { background: rgba(99,102,241,0.1); color: #4f46e5; }
+
+    /* ARCHITECTURE */
+    #architecture { background: linear-gradient(180deg, #070c18 0%, #080f20 100%); }
+    [data-theme="light"] #architecture { background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%); }
+    .arch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+    @media (max-width: 968px) { .arch-grid { grid-template-columns: 1fr; } }
+    .arch-section { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; }
+    [data-theme="light"] .arch-section { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .arch-section-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+    .arch-section-title span { font-size: 20px; }
+    .arch-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+    .arch-item { display: flex; gap: 12px; align-items: flex-start; }
+    .arch-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .arch-content { flex: 1; }
+    .arch-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .arch-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+    .arch-full-width { grid-column: 1 / -1; }
+    .arch-diagram { background: rgba(56,189,248,0.03); border: 1px solid rgba(56,189,248,0.1); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; }
+    [data-theme="light"] .arch-diagram { background: rgba(2,132,199,0.03); border: 1px solid rgba(2,132,199,0.1); }
+    .diagram-title { font-size: 13px; font-weight: 600; color: var(--blue); margin-bottom: 1rem; text-align: center; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; }
+    .diagram-flow { display: flex; flex-direction: column; gap: 1rem; }
+    .diagram-row { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .diagram-box { padding: 12px 20px; background: var(--card); border: 2px solid var(--border); border-radius: 8px; font-size: 12px; font-weight: 600; color: var(--text); text-align: center; min-width: 140px; }
+    .diagram-arrow { color: var(--blue); font-size: 20px; }
+    .diagram-box.highlight { border-color: var(--blue); background: rgba(56,189,248,0.08); }
+    [data-theme="light"] .diagram-box { box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+    /* GRAPHS */
+    #graphs { background: linear-gradient(180deg, #070c18 0%, #080f20 100%); }
+    [data-theme="light"] #graphs { background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%); }
+    .graph-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+    @media (max-width: 968px) { .graph-grid { grid-template-columns: 1fr; } }
+    .graph-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; }
+    [data-theme="light"] .graph-card { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .graph-title { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+    .graph-subtitle { font-size: 12px; color: var(--muted); margin-bottom: 1.5rem; }
+    .stability-bar { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+    .stability-item { display: flex; align-items: center; gap: 12px; }
+    .stability-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); min-width: 140px; }
+    .stability-track { flex: 1; height: 24px; background: rgba(56,189,248,0.05); border-radius: 6px; position: relative; overflow: hidden; }
+    [data-theme="light"] .stability-track { background: rgba(2,132,199,0.08); }
+    .stability-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; color: #ffffff; transition: width 0.8s ease; }
+    .stability-duration { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; min-width: 60px; text-align: right; }
+    .growth-timeline { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1rem; }
+    .growth-item { display: flex; gap: 1rem; position: relative; }
+    .growth-item::before { content: ''; position: absolute; left: 16px; top: 40px; bottom: -20px; width: 2px; background: linear-gradient(180deg, rgba(56,189,248,0.3) 0%, rgba(56,189,248,0.05) 100%); }
+    .growth-item:last-child::before { display: none; }
+    .growth-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; z-index: 1; border: 3px solid var(--bg); }
+    .growth-content { flex: 1; }
+    .growth-role { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .growth-year { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.05em; }
+    .growth-skills { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+    .growth-skill { padding: 2px 8px; background: rgba(56,189,248,0.06); border: 1px solid rgba(56,189,248,0.12); border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); }
+
     /* CONTACT */
     #contact { background: linear-gradient(180deg, #070c18 0%, #060912 100%); }
+    [data-theme="light"] #contact { background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
     .contact-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 0.75rem; }
@@ -153,6 +267,38 @@
       section { padding: 4rem 1rem; }
       .contact-grid { grid-template-columns: 1fr; }
       .timeline { padding-left: 40px; }
+
+      /* Architecture Diagrams - Mobile Fix */
+      .arch-diagram { padding: 1rem; overflow-x: auto; }
+      .diagram-box { min-width: 100px; padding: 10px 14px; font-size: 11px; }
+      .diagram-title { font-size: 11px; }
+
+      /* Clean Architecture - Mobile */
+      .arch-diagram > div[style*="grid-template-columns: 3fr 1fr"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+      }
+
+      /* Feature Modules - Mobile */
+      .arch-diagram div[style*="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr))"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Shared Packages - Mobile */
+      .arch-diagram div[style*="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr))"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Benefits Grid - Mobile */
+      .arch-diagram div[style*="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Architecture Rules - Mobile */
+      div[style*="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))"] {
+        grid-template-columns: 1fr !important;
+      }
     }
   </style>
 </head>
@@ -166,8 +312,14 @@
     <a href="#experience">Experience</a>
     <a href="#founder">Onvira</a>
     <a href="#projects">Projects</a>
-    <a href="#milestones">Milestones</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#education">Education</a>
+    <a href="#graphs">Analytics</a>
     <a href="#contact">Contact</a>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+      <span id="themeIcon">🌙</span>
+      <span id="themeText">Dark</span>
+    </button>
   </div>
 </nav>
 
@@ -179,9 +331,9 @@
     <span class="hero-dot"></span>
     <span>iOS Engineer · 10+ Years · Open to Opportunities</span>
   </div>
-  <h1 class="hero-name">Your Name</h1>
-  <p class="hero-role">Senior iOS Engineer &amp; Framework Architect</p>
-  <p class="hero-tagline">Architecting high-performance iOS applications and frameworks for global financial institutions. 8 years banking domain. 5 MVPs launched as founder of <strong style="color: #f59e0b">Onvira Technologies</strong>.</p>
+  <h1 class="hero-name">Anurag Sharma</h1>
+  <p class="hero-role">Senior iOS Engineer &amp; Application Architect</p>
+  <p class="hero-tagline">Building high-performance iOS applications with strong architectural expertise for global financial institutions. 8 years <strong style="color: #f59e0b">banking domain</strong>. 5 MVPs launched as <strong style="color: #f59e0b">founder</strong> of Onvira Technologies.</p>
   <div class="hero-stats">
     <div><div class="stat-value">10+</div><div class="stat-label">Years iOS</div></div>
     <div><div class="stat-value">8</div><div class="stat-label">Years Banking</div></div>
@@ -203,7 +355,7 @@
     <div class="skill-grid">
       <div class="skill-card">
         <h3>⌨ Core Languages</h3>
-        
+
         <div class="skill-item">
           <div class="skill-name"><span>Swift</span><span class="skill-pct">99%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar" style="width: 99%"></div></div>
@@ -217,12 +369,12 @@
           <div class="skill-bar-bg"><div class="skill-bar" style="width: 92%"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-name"><span>React Native</span><span class="skill-pct">78%</span></div>
-          <div class="skill-bar-bg"><div class="skill-bar" style="width: 78%"></div></div>
+          <div class="skill-name"><span>React Native</span><span class="skill-pct" style="opacity: 0.6">familiar</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 65%; opacity: 0.5"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-name"><span>React / JS</span><span class="skill-pct">72%</span></div>
-          <div class="skill-bar-bg"><div class="skill-bar" style="width: 72%"></div></div>
+          <div class="skill-name"><span>React / JS</span><span class="skill-pct" style="opacity: 0.6">familiar</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 60%; opacity: 0.5"></div></div>
         </div>
       </div>
       <div class="skill-card">
@@ -241,36 +393,28 @@
           <div class="skill-bar-bg"><div class="skill-bar" style="width: 97%"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-name"><span>UIKit / AppKit</span><span class="skill-pct">95%</span></div>
-          <div class="skill-bar-bg"><div class="skill-bar" style="width: 95%"></div></div>
-        </div>
-        <div class="skill-item">
           <div class="skill-name"><span>SwiftData / CloudKit</span><span class="skill-pct">92%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar" style="width: 92%"></div></div>
         </div>
       </div>
       <div class="skill-card">
         <h3>🏦 Domain &amp; Security</h3>
-        
+
         <div class="skill-item">
-          <div class="skill-name"><span>Banking & Finance</span><span class="skill-pct">96%</span></div>
+          <div class="skill-name"><span>Retail Banking</span><span class="skill-pct">96%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar" style="width: 96%"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-name"><span>Payment Systems</span><span class="skill-pct">90%</span></div>
-          <div class="skill-bar-bg"><div class="skill-bar" style="width: 90%"></div></div>
+          <div class="skill-name"><span>App Security</span><span class="skill-pct">94%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 94%"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-name"><span>App Security</span><span class="skill-pct">92%</span></div>
+          <div class="skill-name"><span>Payment & POS SDK</span><span class="skill-pct">92%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar" style="width: 92%"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-name"><span>Secure Communication</span><span class="skill-pct">90%</span></div>
-          <div class="skill-bar-bg"><div class="skill-bar" style="width: 90%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Identity & Credit</span><span class="skill-pct">85%</span></div>
-          <div class="skill-bar-bg"><div class="skill-bar" style="width: 85%"></div></div>
+          <div class="skill-name"><span>KYC & Identity</span><span class="skill-pct">88%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width: 88%"></div></div>
         </div>
       </div>
       <div class="skill-card">
@@ -321,25 +465,25 @@
         <div class="exp-card" style="border-color: rgba(0,174,239,0.15)">
           <div class="exp-header">
             <div>
-              <span class="exp-company">🏦 Barclays</span>
-              <span class="exp-badge" style="background: rgba(0,174,239,0.1); border: 1px solid rgba(0,174,239,0.25); color: #00aeef;">Banking</span>
+              <span class="exp-company">🏦 Capgemini India Pvt Limited</span>
+              <span class="exp-badge" style="background: rgba(0,174,239,0.1); border: 1px solid rgba(0,174,239,0.25); color: #00aeef;">Banking / IT Consulting</span>
               <div class="exp-role">Senior iOS Engineer</div>
             </div>
             <div>
-              <div class="exp-duration" style="color: #00aeef">3.5+ Years</div>
-              <div class="exp-period">2020 – 2023</div>
+              <div class="exp-duration" style="color: #00aeef">5.5 Years</div>
+              <div class="exp-period">Jun 2020 – Nov 2025</div>
             </div>
           </div>
           <ul class="exp-list" style="color: #94a3b8">
-            <li style="--c: #00aeef">Architected core iOS banking SDK used by 2M+ retail customers</li>
-            <li>Led migration of legacy Objective-C codebase to Swift with zero regression</li>
+            <li style="--c: #00aeef">Worked on Barclays Mobile Banking (UK) app serving 12M+ customers</li>
+            <li>Developed TransUnion Onboarding SDK with KYC/AML compliance and identity verification</li>
             <li>Built secure biometric authentication framework with SSL pinning &amp; certificate validation</li>
-            <li>Developed modular xcFramework for reusable banking components across 3 product lines</li>
-            <li>Implemented PSD2 open banking compliance features for EU market</li>
-            <li>Mentored team of 4 junior iOS developers</li>
+            <li>Developed modular xcFramework for reusable banking components across multiple product lines</li>
+            <li>Implemented PSD2 open banking compliance features and secure payment workflows</li>
+            <li>Mentored junior iOS developers and collaborated with cross-functional teams under Agile</li>
           </ul>
           <div class="tech-tags">
-            <span class="tech-tag">Swift</span><span class="tech-tag">Objective-C</span><span class="tech-tag">xcFramework</span><span class="tech-tag">Keychain</span><span class="tech-tag">Biometrics</span><span class="tech-tag">SSL Pinning</span><span class="tech-tag">CocoaPods</span><span class="tech-tag">Jenkins</span>
+            <span class="tech-tag">Swift</span><span class="tech-tag">Objective-C</span><span class="tech-tag">xcFramework</span><span class="tech-tag">Keychain</span><span class="tech-tag">Biometrics</span><span class="tech-tag">SSL Pinning</span><span class="tech-tag">Vision Framework</span><span class="tech-tag">KYC/AML</span>
           </div>
         </div>
       </div>
@@ -349,24 +493,51 @@
         <div class="exp-card" style="border-color: rgba(245,158,11,0.15)">
           <div class="exp-header">
             <div>
-              <span class="exp-company">💳 Global Payments</span>
-              <span class="exp-badge" style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); color: #f59e0b;">FinTech / Payments</span>
-              <div class="exp-role">iOS Developer — Payments Platform</div>
+              <span class="exp-company">🔥 Johnson Controls India Pvt Limited</span>
+              <span class="exp-badge" style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); color: #f59e0b;">IoT / Fire Safety</span>
+              <div class="exp-role">iOS Developer (R&amp;D) + Product Owner</div>
             </div>
             <div>
-              <div class="exp-duration" style="color: #f59e0b">2+ Years</div>
-              <div class="exp-period">2018 – 2020</div>
+              <div class="exp-duration" style="color: #f59e0b">1 Year</div>
+              <div class="exp-period">Apr 2019 – May 2020</div>
             </div>
           </div>
           <ul class="exp-list">
-            <li>Built end-to-end payment SDK for iOS merchants handling PCI-DSS compliant card tokenisation</li>
-            <li>Developed Swift Package for unified payment gateway integration across iOS apps</li>
-            <li>Implemented NFC/contactless payment flows and Apple Pay integration</li>
-            <li>Created automated BDD test suite reducing QA cycle time by 40%</li>
-            <li>Integrated 3DS2 authentication for European card transactions</li>
+            <li>Led R&amp;D and product ownership for Tier 3 Market App used to configure fire detection products</li>
+            <li>Designed iOS modules for QR code scanning of smoke detectors and initiating devices</li>
+            <li>Integrated app with Foundation Series fire alarm control units for field programming</li>
+            <li>Collaborated with firmware and hardware teams for console compatibility</li>
+            <li>Defined product roadmap and coordinated cross-functional delivery under Agile methodology</li>
           </ul>
           <div class="tech-tags">
-            <span class="tech-tag">Swift</span><span class="tech-tag">SwiftUI</span><span class="tech-tag">NFC</span><span class="tech-tag">Apple Pay</span><span class="tech-tag">PassKit</span><span class="tech-tag">Swift Package Manager</span><span class="tech-tag">XCTest</span><span class="tech-tag">BDD</span>
+            <span class="tech-tag">Swift</span><span class="tech-tag">AVFoundation</span><span class="tech-tag">Bluetooth</span><span class="tech-tag">QR Scanner</span><span class="tech-tag">IoT</span><span class="tech-tag">Product Management</span><span class="tech-tag">Agile</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item" style="margin-top: 1.5rem">
+        <div class="timeline-dot" style="background: #38bdf8; box-shadow: 0 0 12px rgba(56,189,248,0.4);"></div>
+        <div class="exp-card" style="border-color: rgba(56,189,248,0.15)">
+          <div class="exp-header">
+            <div>
+              <span class="exp-company">💳 Capgemini India Pvt Limited</span>
+              <span class="exp-badge" style="background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.25); color: #38bdf8;">Banking / Payments</span>
+              <div class="exp-role">iOS Developer</div>
+            </div>
+            <div>
+              <div class="exp-duration" style="color: #38bdf8">2.5 Years</div>
+              <div class="exp-period">Aug 2016 – Apr 2019</div>
+            </div>
+          </div>
+          <ul class="exp-list">
+            <li>Developed Heartland iOS SDK (CocoaPods) for PCI-DSS compliant payment processing</li>
+            <li>Revived Barclays Germany legacy Android app and implemented SSL Pinning with GuardIT</li>
+            <li>Contributed to iOS app security by implementing EnsureIT framework for runtime protection</li>
+            <li>Built payment workflows for credit/debit cards, refunds, and tokenization</li>
+            <li>Published and maintained SDK documentation on CocoaPods for developer adoption</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">Objective-C</span><span class="tech-tag">Swift</span><span class="tech-tag">CocoaPods</span><span class="tech-tag">PCI-DSS</span><span class="tech-tag">SSL Pinning</span><span class="tech-tag">Android</span><span class="tech-tag">GuardIT</span><span class="tech-tag">EnsureIT</span>
           </div>
         </div>
       </div>
@@ -376,24 +547,49 @@
         <div class="exp-card" style="border-color: rgba(52,211,153,0.15)">
           <div class="exp-header">
             <div>
-              <span class="exp-company">🔐 TransUnion</span>
-              <span class="exp-badge" style="background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); color: #34d399;">Credit &amp; Identity</span>
-              <div class="exp-role">iOS Engineer — Identity &amp; Credit</div>
+              <span class="exp-company">📱 Kiwi Technologies India Pvt. Limited</span>
+              <span class="exp-badge" style="background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); color: #34d399;">Mobile Development</span>
+              <div class="exp-role">iOS Developer</div>
             </div>
             <div>
-              <div class="exp-duration" style="color: #34d399">2.5 Years</div>
-              <div class="exp-period">2015 – 2018</div>
+              <div class="exp-duration" style="color: #34d399">6 Months</div>
+              <div class="exp-period">Sep 2015 – Mar 2016</div>
             </div>
           </div>
           <ul class="exp-list">
-            <li>Developed CreditView iOS application for real-time credit score monitoring</li>
-            <li>Built identity verification SDK with document scanning and liveness detection</li>
-            <li>Implemented GDPR-compliant data handling and on-device data encryption</li>
-            <li>Led architecture decision to adopt MVVM-C pattern across the iOS team</li>
-            <li>Built reusable chart library for credit score trend visualisation</li>
+            <li>Developed native iOS applications using Objective-C and Swift</li>
+            <li>Implemented RESTful API integrations and data persistence with CoreData</li>
+            <li>Worked on UI/UX implementation following iOS Human Interface Guidelines</li>
+            <li>Collaborated with design and backend teams for feature delivery</li>
           </ul>
           <div class="tech-tags">
-            <span class="tech-tag">Swift</span><span class="tech-tag">Objective-C</span><span class="tech-tag">CoreData</span><span class="tech-tag">Vision Framework</span><span class="tech-tag">AVFoundation</span><span class="tech-tag">MVVM-C</span><span class="tech-tag">Jenkins</span><span class="tech-tag">Agile</span>
+            <span class="tech-tag">Objective-C</span><span class="tech-tag">Swift</span><span class="tech-tag">CoreData</span><span class="tech-tag">REST APIs</span><span class="tech-tag">UIKit</span><span class="tech-tag">Agile</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item" style="margin-top: 1.5rem">
+        <div class="timeline-dot" style="background: #a78bfa; box-shadow: 0 0 12px rgba(167,139,250,0.4);"></div>
+        <div class="exp-card" style="border-color: rgba(167,139,250,0.15)">
+          <div class="exp-header">
+            <div>
+              <span class="exp-company">🚀 TechAhead Software Pvt. Limited</span>
+              <span class="exp-badge" style="background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.25); color: #a78bfa;">Mobile Development</span>
+              <div class="exp-role">iOS Developer</div>
+            </div>
+            <div>
+              <div class="exp-duration" style="color: #a78bfa">3 Months</div>
+              <div class="exp-period">Jun 2015 – Sep 2015</div>
+            </div>
+          </div>
+          <ul class="exp-list">
+            <li>Started career as iOS developer working on client projects</li>
+            <li>Developed iOS applications using Objective-C with basic UI components</li>
+            <li>Learned iOS fundamentals including MVC architecture and memory management</li>
+            <li>Gained hands-on experience with Xcode, Interface Builder, and version control</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">Objective-C</span><span class="tech-tag">UIKit</span><span class="tech-tag">MVC</span><span class="tech-tag">Xcode</span><span class="tech-tag">Git</span>
           </div>
         </div>
       </div>
@@ -409,7 +605,14 @@
       <h2 class="section-title" style="margin-bottom: 0">Onvira Technologies</h2>
       <span class="founder-badge">FOUNDER · STARTUP</span>
     </div>
-    <p class="section-sub">A product-based startup I founded to turn domain expertise into real-world SwiftUI applications. From concept to App Store — 5 MVPs across fintech, health, security, and payments.</p>
+    <p class="section-sub">A product-based startup I founded to turn domain expertise into real-world SwiftUI applications. From concept to App Store — 5 MVPs across education, productivity, utilities, and design.</p>
+
+    <div class="founder-highlight">
+      <h3 style="font-size: 14px; font-weight: 600; color: var(--amber); margin-bottom: 0.75rem; letter-spacing: 0.05em;">END-TO-END PRODUCT OWNERSHIP</h3>
+      <p style="font-size: 13.5px; line-height: 1.7; color: var(--muted); margin: 0;">
+        As a solo founder and developer, I own the entire product lifecycle for each app — from <strong style="color: var(--text)">ideation and user research</strong> to <strong style="color: var(--text)">Figma design and UX prototyping</strong>, followed by <strong style="color: var(--text)">complete iOS development</strong> using SwiftUI and modern frameworks. I architect scalable, maintainable codebases with clean separation of concerns, implement robust data persistence, integrate cloud services, and deploy production-ready applications to the App Store. Every pixel, every line of code, and every architectural decision is crafted individually — demonstrating hands-on expertise across design, development, and delivery.
+      </p>
+    </div>
 
     <div class="founder-stats">
       
@@ -441,61 +644,66 @@
 
     <h3 style="font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 1.25rem;">Products Built</h3>
     <div class="mvp-grid">
-      
-      <div class="mvp-card" style="border: 1px solid #38bdf820">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start">
-          <div>
-            <div class="mvp-name">FinanceFlow</div>
-            <div class="mvp-domain" style="color: #38bdf8">Personal Finance</div>
-          </div>
-          <span style="padding: 2px 10px; background: #38bdf812; border: 1px solid #38bdf830; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #38bdf8;">Live</span>
-        </div>
-        <p class="mvp-desc">AI-powered personal finance tracker with SwiftUI charts and iCloud sync via CloudKit.</p>
-        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">SwiftData</span><span class="tech-tag">CloudKit</span><span class="tech-tag">Swift Charts</span></div>
-      </div>
+
       <div class="mvp-card" style="border: 1px solid #34d39920">
         <div style="display: flex; justify-content: space-between; align-items: flex-start">
           <div>
-            <div class="mvp-name">HealthVault</div>
-            <div class="mvp-domain" style="color: #34d399">HealthTech</div>
+            <div class="mvp-name">Onvira - EchoLearn</div>
+            <div class="mvp-domain" style="color: #34d399">Education</div>
           </div>
           <span style="padding: 2px 10px; background: #34d39912; border: 1px solid #34d39930; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #34d399;">Live</span>
         </div>
-        <p class="mvp-desc">Encrypted health records manager with HealthKit integration and biometric lock.</p>
-        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">HealthKit</span><span class="tech-tag">CryptoKit</span><span class="tech-tag">SwiftData</span></div>
+        <p class="mvp-desc">Voice-based learning companion with AI integration (GPT support), JSON import, Natural Language Scoring, and smart progress tracking.</p>
+        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">AI/GPT</span><span class="tech-tag">AVFoundation</span><span class="tech-tag">NLP</span></div>
+        <a href="https://apps.apple.com/us/app/onvira-echolearn/id6762633841" target="_blank" class="mvp-link" style="background: #34d39912; border: 1px solid #34d39925; color: #34d399">↗ App Store</a>
+      </div>
+      <div class="mvp-card" style="border: 1px solid #38bdf820">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <div>
+            <div class="mvp-name">Interview Tracker</div>
+            <div class="mvp-domain" style="color: #38bdf8">Productivity</div>
+          </div>
+          <span style="padding: 2px 10px; background: #38bdf812; border: 1px solid #38bdf830; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #38bdf8;">Live</span>
+        </div>
+        <p class="mvp-desc">Smart solution for job seekers to track interview schedules, company details, and follow-ups in one place.</p>
+        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">SwiftData</span><span class="tech-tag">Notifications</span><span class="tech-tag">Calendar</span></div>
+        <a href="https://apps.apple.com/us/app/interview-tracker/id6760452161" target="_blank" class="mvp-link" style="background: #38bdf812; border: 1px solid #38bdf825; color: #38bdf8">↗ App Store</a>
       </div>
       <div class="mvp-card" style="border: 1px solid #f59e0b20">
         <div style="display: flex; justify-content: space-between; align-items: flex-start">
           <div>
-            <div class="mvp-name">PayLink</div>
-            <div class="mvp-domain" style="color: #f59e0b">Payments</div>
+            <div class="mvp-name">Onvira Parent Hub</div>
+            <div class="mvp-domain" style="color: #f59e0b">Education</div>
           </div>
           <span style="padding: 2px 10px; background: #f59e0b12; border: 1px solid #f59e0b30; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f59e0b;">Live</span>
         </div>
-        <p class="mvp-desc">P2P payment request app with QR code generation and split-bill calculator.</p>
-        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Firebase</span><span class="tech-tag">AVFoundation</span><span class="tech-tag">PassKit</span></div>
+        <p class="mvp-desc">Parent-school communication app with QR login, fee tracking, homework updates, transport info, and direct queries to school.</p>
+        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">QR Codes</span><span class="tech-tag">Firebase</span><span class="tech-tag">Push Notifications</span></div>
+        <a href="https://apps.apple.com/us/app/onvira-parent-hub/id6765913488" target="_blank" class="mvp-link" style="background: #f59e0b12; border: 1px solid #f59e0b25; color: #f59e0b">↗ App Store</a>
       </div>
       <div class="mvp-card" style="border: 1px solid #a78bfa20">
         <div style="display: flex; justify-content: space-between; align-items: flex-start">
           <div>
-            <div class="mvp-name">LoanLens</div>
-            <div class="mvp-domain" style="color: #a78bfa">Banking / Credit</div>
+            <div class="mvp-name">Onvira - Audio Companion</div>
+            <div class="mvp-domain" style="color: #a78bfa">Utilities</div>
           </div>
           <span style="padding: 2px 10px; background: #a78bfa12; border: 1px solid #a78bfa30; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #a78bfa;">Live</span>
         </div>
-        <p class="mvp-desc">Loan comparison engine with amortisation schedules and eligibility insights.</p>
-        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">CloudKit</span><span class="tech-tag">Swift Charts</span><span class="tech-tag">Algorithms</span></div>
+        <p class="mvp-desc">Voice-based note-taking and audio companion for quick voice memos, notes, and audio organization.</p>
+        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">AVFoundation</span><span class="tech-tag">Speech Framework</span><span class="tech-tag">CloudKit</span></div>
+        <a href="https://apps.apple.com/us/app/onvira-audio-companion/id6760612570" target="_blank" class="mvp-link" style="background: #a78bfa12; border: 1px solid #a78bfa25; color: #a78bfa">↗ App Store</a>
       </div>
       <div class="mvp-card" style="border: 1px solid #f8717120">
         <div style="display: flex; justify-content: space-between; align-items: flex-start">
           <div>
-            <div class="mvp-name">SecureVault</div>
-            <div class="mvp-domain" style="color: #f87171">Security</div>
+            <div class="mvp-name">Onvira - Let's Colour</div>
+            <div class="mvp-domain" style="color: #f87171">Graphics & Design</div>
           </div>
           <span style="padding: 2px 10px; background: #f8717112; border: 1px solid #f8717130; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f87171;">Live</span>
         </div>
-        <p class="mvp-desc">Enterprise-grade secrets manager with zero-knowledge on-device encryption.</p>
-        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">CryptoKit</span><span class="tech-tag">Keychain</span><span class="tech-tag">LocalAuth</span></div>
+        <p class="mvp-desc">Fun colouring app for kids with blend mode support, paint brush, opacity control, custom library, and colour theory suggestions.</p>
+        <div class="tech-tags"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Core Graphics</span><span class="tech-tag">PencilKit</span><span class="tech-tag">PhotoKit</span></div>
+        <a href="https://apps.apple.com/us/app/onvira-lets-colour/id6761375954" target="_blank" class="mvp-link" style="background: #f8717112; border: 1px solid #f8717125; color: #f87171">↗ App Store</a>
       </div>
     </div>
   </div>
@@ -505,224 +713,892 @@
 <section id="projects">
   <div class="container">
     <span class="section-label">// selected_projects</span>
-    <h2 class="section-title">Projects</h2>
-    <p class="section-sub">Startup MVPs and enterprise-grade banking infrastructure — built end-to-end.</p>
+    <h2 class="section-title">Enterprise Projects</h2>
+    <p class="section-sub">Enterprise-grade banking, payments, identity verification, and IoT solutions delivered for global clients.</p>
 
     <div class="project-grid">
-      
-      <div class="project-card" style="border: 1px solid #38bdf818">
-        <div class="project-img" style="background: linear-gradient(135deg, #38bdf810 0%, rgba(13,21,37,0.5) 100%)">
-          <div style="background-image: radial-gradient(#38bdf815 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
-          <span style="font-size: 24px; position: relative; opacity: 0.4">📱</span>
-          <span class="project-img-label">screenshot_placeholder</span>
-          <span style="position: absolute; top: 10px; left: 12px; padding: 3px 10px; background: #38bdf815; border: 1px solid #38bdf830; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #38bdf8;">FinTech</span>
-        </div>
-        <div class="project-body">
-          <div class="project-company">Onvira Technologies</div>
-          <div class="project-name">FinanceFlow</div>
-          <p class="project-desc">A SwiftUI-first personal finance tracker with AI-powered categorisation, custom budget goals, SwiftData persistence, and iCloud sync via CloudKit.</p>
-          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">SwiftUI</span><span class="tech-tag">SwiftData</span><span class="tech-tag">CloudKit</span><span class="tech-tag">Swift Charts</span></div>
-          <a href="https://apps.apple.com" target="_blank" class="project-link" style="background: #38bdf812; border: 1px solid #38bdf825; color: #38bdf8">↗ App Store</a>
-        </div>
-      </div>
+
       <div class="project-card" style="border: 1px solid #34d39918">
         <div class="project-img" style="background: linear-gradient(135deg, #34d39910 0%, rgba(13,21,37,0.5) 100%)">
           <div style="background-image: radial-gradient(#34d39915 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
-          <span style="font-size: 24px; position: relative; opacity: 0.4">📱</span>
-          <span class="project-img-label">screenshot_placeholder</span>
-          <span style="position: absolute; top: 10px; left: 12px; padding: 3px 10px; background: #34d39915; border: 1px solid #34d39930; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #34d399;">HealthTech</span>
+          <span style="font-size: 24px; position: relative; opacity: 0.4">🔐</span>
+          <span class="project-img-label">KYC / Identity SDK</span>
         </div>
         <div class="project-body">
-          <div class="project-company">Onvira Technologies</div>
-          <div class="project-name">HealthVault</div>
-          <p class="project-desc">Encrypted personal health records manager with HealthKit integration. AES-256 encryption, biometric auth, export-to-PDF.</p>
-          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">SwiftUI</span><span class="tech-tag">HealthKit</span><span class="tech-tag">CryptoKit</span><span class="tech-tag">PDFKit</span></div>
-          <a href="https://apps.apple.com" target="_blank" class="project-link" style="background: #34d39912; border: 1px solid #34d39925; color: #34d399">↗ App Store</a>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <div style="padding: 6px 12px; background: linear-gradient(135deg, #e42527 0%, #c11e20 100%); border-radius: 6px; font-weight: 700; font-size: 11px; color: #ffffff; letter-spacing: 0.03em;">TRANSUNION</div>
+          </div>
+          <div class="project-name">Onboarding SDK</div>
+          <div style="font-size: 11px; color: #64748b; margin-top: 4px; font-family: 'JetBrains Mono', monospace;">Sep 2023 - Sep 2025</div>
+          <p class="project-desc">Developed and integrated TransUnion's Onboarding SDK for identity verification and fraud prevention. Implemented document verification, facial recognition, and liveness detection modules with AML/KYC compliance workflows.</p>
+          <div style="padding: 8px 12px; background: rgba(52,211,153,0.05); border-left: 3px solid #34d399; border-radius: 4px; margin: 0.75rem 0; font-size: 12px; color: #94a3b8;">
+            <strong style="color: #34d399">Impact:</strong> Reduced fraud attempts by 40% and improved onboarding success rate by 25%.
+          </div>
+          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">Swift</span><span class="tech-tag">Vision Framework</span><span class="tech-tag">Face ID</span><span class="tech-tag">AVFoundation</span><span class="tech-tag">KYC/AML</span></div>
+          <span style="padding: 7px 14px; background: rgba(56,189,248,0.04); border: 1px solid rgba(56,189,248,0.08); border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted);">SDK / Enterprise</span>
         </div>
       </div>
-      <div class="project-card" style="border: 1px solid #f59e0b18">
-        <div class="project-img" style="background: linear-gradient(135deg, #f59e0b10 0%, rgba(13,21,37,0.5) 100%)">
-          <div style="background-image: radial-gradient(#f59e0b15 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
-          <span style="font-size: 24px; position: relative; opacity: 0.4">📱</span>
-          <span class="project-img-label">screenshot_placeholder</span>
-          <span style="position: absolute; top: 10px; left: 12px; padding: 3px 10px; background: #f59e0b15; border: 1px solid #f59e0b30; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f59e0b;">Payments</span>
-        </div>
-        <div class="project-body">
-          <div class="project-company">Onvira Technologies</div>
-          <div class="project-name">PayLink</div>
-          <p class="project-desc">Peer-to-peer payment request app with QR code generation, split-bill calculator, and Firebase real-time status.</p>
-          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Firebase</span><span class="tech-tag">Core Image</span><span class="tech-tag">PassKit</span></div>
-          <a href="https://apps.apple.com" target="_blank" class="project-link" style="background: #f59e0b12; border: 1px solid #f59e0b25; color: #f59e0b">↗ App Store</a>
-        </div>
-      </div>
-      <div class="project-card" style="border: 1px solid #f8717118">
-        <div class="project-img" style="background: linear-gradient(135deg, #f8717110 0%, rgba(13,21,37,0.5) 100%)">
-          <div style="background-image: radial-gradient(#f8717115 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
-          <span style="font-size: 24px; position: relative; opacity: 0.4">📱</span>
-          <span class="project-img-label">screenshot_placeholder</span>
-          <span style="position: absolute; top: 10px; left: 12px; padding: 3px 10px; background: #f8717115; border: 1px solid #f8717130; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f87171;">Security</span>
-        </div>
-        <div class="project-body">
-          <div class="project-company">Onvira Technologies</div>
-          <div class="project-name">SecureVault</div>
-          <p class="project-desc">Enterprise-grade password and secrets manager. Zero-knowledge on-device encryption, AutoFill extension, breach detection.</p>
-          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">SwiftUI</span><span class="tech-tag">CryptoKit</span><span class="tech-tag">Keychain</span><span class="tech-tag">LocalAuth</span></div>
-          <a href="https://apps.apple.com" target="_blank" class="project-link" style="background: #f8717112; border: 1px solid #f8717125; color: #f87171">↗ App Store</a>
-        </div>
-      </div>
-      <div class="project-card" style="border: 1px solid #a78bfa18">
-        <div class="project-img" style="background: linear-gradient(135deg, #a78bfa10 0%, rgba(13,21,37,0.5) 100%)">
-          <div style="background-image: radial-gradient(#a78bfa15 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
-          <span style="font-size: 24px; position: relative; opacity: 0.4">📱</span>
-          <span class="project-img-label">screenshot_placeholder</span>
-          <span style="position: absolute; top: 10px; left: 12px; padding: 3px 10px; background: #a78bfa15; border: 1px solid #a78bfa30; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #a78bfa;">Banking / Credit</span>
-        </div>
-        <div class="project-body">
-          <div class="project-company">Onvira Technologies</div>
-          <div class="project-name">LoanLens</div>
-          <p class="project-desc">Loan comparison and eligibility engine with amortisation schedules and push notification rate alerts.</p>
-          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">SwiftUI</span><span class="tech-tag">CloudKit</span><span class="tech-tag">Swift Charts</span><span class="tech-tag">Algorithms</span></div>
-          <a href="https://apps.apple.com" target="_blank" class="project-link" style="background: #a78bfa12; border: 1px solid #a78bfa25; color: #a78bfa">↗ App Store</a>
-        </div>
-      </div>
+
       <div class="project-card" style="border: 1px solid #00aeef18">
         <div class="project-img" style="background: linear-gradient(135deg, #00aeef10 0%, rgba(13,21,37,0.5) 100%)">
           <div style="background-image: radial-gradient(#00aeef15 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
-          <span style="font-size: 24px; position: relative; opacity: 0.4">📱</span>
-          <span class="project-img-label">screenshot_placeholder</span>
-          <span style="position: absolute; top: 10px; left: 12px; padding: 3px 10px; background: #00aeef15; border: 1px solid #00aeef30; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #00aeef;">Banking SDK</span>
+          <span style="font-size: 24px; position: relative; opacity: 0.4">🏦</span>
+          <span class="project-img-label">Mobile Banking</span>
+          <span class="project-category-badge" style="background: #00aeef15; border: 1px solid #00aeef30; color: #00aeef;">Retail Banking</span>
         </div>
         <div class="project-body">
-          <div class="project-company">Barclays</div>
-          <div class="project-name">Barclays Mobile SDK</div>
-          <p class="project-desc">Core iOS banking SDK serving 2M+ retail customers. Modular xcFramework architecture enabling feature toggling across product lines.</p>
-          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">Swift</span><span class="tech-tag">xcFramework</span><span class="tech-tag">Biometrics</span><span class="tech-tag">SSL Pinning</span></div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <div style="padding: 6px 12px; background: linear-gradient(135deg, #00aeef 0%, #0090c9 100%); border-radius: 6px; font-weight: 700; font-size: 11px; color: #ffffff; letter-spacing: 0.03em;">BARCLAYS</div>
+          </div>
+          <div class="project-name">Barclays Mobile Banking (UK) <span style="color: var(--muted); font-weight: 500;">/ BMB</span></div>
+          <div style="font-size: 11px; color: #64748b; margin-top: 4px; font-family: 'JetBrains Mono', monospace;">Jun 2020 - Aug 2023</div>
+          <p class="project-desc">Contributed to development and enhancement of Barclays Mobile Banking app serving over 12M UK customers. Implemented secure payment workflows, card management features, and identity verification modules with financial compliance.</p>
+          <div style="padding: 8px 12px; background: rgba(0,174,239,0.05); border-left: 3px solid #00aeef; border-radius: 4px; margin: 0.75rem 0; font-size: 12px; color: #94a3b8;">
+            <strong style="color: #00aeef">Impact:</strong> Improved transaction success rates and enhanced UX for millions of Barclays customers.
+          </div>
+          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">Swift</span><span class="tech-tag">Objective-C</span><span class="tech-tag">xcFramework</span><span class="tech-tag">SSL Pinning</span><span class="tech-tag">Biometrics</span></div>
           <span style="padding: 7px 14px; background: rgba(56,189,248,0.04); border: 1px solid rgba(56,189,248,0.08); border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted);">Internal / NDA</span>
+        </div>
+      </div>
+
+      <div class="project-card" style="border: 1px solid #f59e0b18">
+        <div class="project-img" style="background: linear-gradient(135deg, #f59e0b10 0%, rgba(13,21,37,0.5) 100%)">
+          <div style="background-image: radial-gradient(#f59e0b15 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
+          <span style="font-size: 24px; position: relative; opacity: 0.4">🔥</span>
+          <span class="project-img-label">IoT / Fire Safety</span>
+          <span class="project-category-badge" style="background: #f59e0b15; border: 1px solid #f59e0b30; color: #f59e0b;">IoT</span>
+        </div>
+        <div class="project-body">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <div style="padding: 6px 12px; background: linear-gradient(135deg, #0066b3 0%, #004a86 100%); border-radius: 6px; font-weight: 700; font-size: 11px; color: #ffffff; letter-spacing: 0.03em;">JOHNSON CONTROLS</div>
+          </div>
+          <div class="project-name">Tier 3 Market App (Fire Detection)</div>
+          <div style="font-size: 11px; color: #64748b; margin-top: 4px; font-family: 'JetBrains Mono', monospace;">Apr 2019 - May 2020</div>
+          <p class="project-desc">Led R&D and product ownership for Johnson Controls' Tier 3 Market App used to configure and manage fire detection products. Designed iOS modules for QR code scanning, integrated with Foundation Series fire alarm control units.</p>
+          <div style="padding: 8px 12px; background: rgba(245,158,11,0.05); border-left: 3px solid #f59e0b; border-radius: 4px; margin: 0.75rem 0; font-size: 12px; color: #94a3b8;">
+            <strong style="color: #f59e0b">Impact:</strong> Improved field efficiency by 30%, reduced configuration errors, enabled faster deployment.
+          </div>
+          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">Swift</span><span class="tech-tag">AVFoundation</span><span class="tech-tag">Bluetooth</span><span class="tech-tag">QR Scanner</span><span class="tech-tag">IoT</span></div>
+          <span style="padding: 7px 14px; background: rgba(56,189,248,0.04); border: 1px solid rgba(56,189,248,0.08); border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted);">R&D / Product Owner</span>
+        </div>
+      </div>
+
+      <div class="project-card" style="border: 1px solid #38bdf818">
+        <div class="project-img" style="background: linear-gradient(135deg, #38bdf810 0%, rgba(13,21,37,0.5) 100%)">
+          <div style="background-image: radial-gradient(#38bdf815 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
+          <span style="font-size: 24px; position: relative; opacity: 0.4">💳</span>
+          <span class="project-img-label">POS SDK</span>
+          <span class="project-category-badge" style="background: #38bdf815; border: 1px solid #38bdf830; color: #38bdf8;">Payments</span>
+        </div>
+        <div class="project-body">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <div style="padding: 6px 12px; background: linear-gradient(135deg, #00a651 0%, #008a43 100%); border-radius: 6px; font-weight: 700; font-size: 11px; color: #ffffff; letter-spacing: 0.03em;">HEARTLAND</div>
+            <div style="padding: 4px 8px; background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.15); border-radius: 4px; font-size: 9px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">Global Payments</div>
+          </div>
+          <div class="project-name">Heartland iOS SDK (CocoaPods)</div>
+          <div style="font-size: 11px; color: #64748b; margin-top: 4px; font-family: 'JetBrains Mono', monospace;">Aug 2016 - Jun 2018</div>
+          <p class="project-desc">Developed and maintained the Heartland iOS SDK, a CocoaPods-based library enabling merchant apps to process payments securely through Heartland Payment Gateway. Implemented transaction workflows with PCI compliance.</p>
+          <div style="padding: 8px 12px; background: rgba(56,189,248,0.05); border-left: 3px solid #38bdf8; border-radius: 4px; margin: 0.75rem 0; font-size: 12px; color: #94a3b8;">
+            <strong style="color: #38bdf8">Impact:</strong> Reduced integration time by 40%, enabled seamless merchant app integrations.
+          </div>
+          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">Objective-C</span><span class="tech-tag">CocoaPods</span><span class="tech-tag">PCI-DSS</span><span class="tech-tag">Encryption</span><span class="tech-tag">POS</span></div>
+          <span style="padding: 7px 14px; background: rgba(56,189,248,0.04); border: 1px solid rgba(56,189,248,0.08); border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted);">SDK / CocoaPods</span>
+        </div>
+      </div>
+
+      <div class="project-card" style="border: 1px solid #a78bfa18">
+        <div class="project-img" style="background: linear-gradient(135deg, #a78bfa10 0%, rgba(13,21,37,0.5) 100%)">
+          <div style="background-image: radial-gradient(#a78bfa15 1px, transparent 1px); background-size: 24px 24px; position: absolute; inset: 0;"></div>
+          <span style="font-size: 24px; position: relative; opacity: 0.4">🛡️</span>
+          <span class="project-img-label">Legacy Revival</span>
+          <span class="project-category-badge" style="background: #a78bfa15; border: 1px solid #a78bfa30; color: #a78bfa;">Banking Security</span>
+        </div>
+        <div class="project-body">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <div style="padding: 6px 12px; background: linear-gradient(135deg, #00aeef 0%, #0090c9 100%); border-radius: 6px; font-weight: 700; font-size: 11px; color: #ffffff; letter-spacing: 0.03em;">BARCLAYS</div>
+            <div style="padding: 4px 8px; background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; font-size: 9px; color: #a78bfa; font-family: 'JetBrains Mono', monospace;">Germany</div>
+          </div>
+          <div class="project-name">Barclays Mobile Banking (Germany) <span style="color: var(--muted); font-weight: 500;">— Legacy Revival</span></div>
+          <div style="font-size: 11px; color: #64748b; margin-top: 4px; font-family: 'JetBrains Mono', monospace;">Jul 2018 - Mar 2019</div>
+          <p class="project-desc">Revived and modernized the legacy Android mobile banking app, bringing it back to live production. Implemented SSL Pinning on Android (GuardIT) and contributed to iOS security with EnsureIT framework for runtime protection.</p>
+          <div style="padding: 8px 12px; background: rgba(167,139,250,0.05); border-left: 3px solid #a78bfa; border-radius: 4px; margin: 0.75rem 0; font-size: 12px; color: #94a3b8;">
+            <strong style="color: #a78bfa">Impact:</strong> Successfully relaunched legacy app, enhanced security posture across platforms.
+          </div>
+          <div class="tech-tags" style="margin-bottom: 1rem"><span class="tech-tag">Swift</span><span class="tech-tag">Android</span><span class="tech-tag">SSL Pinning</span><span class="tech-tag">GuardIT</span><span class="tech-tag">EnsureIT</span></div>
+          <span style="padding: 7px 14px; background: rgba(56,189,248,0.04); border: 1px solid rgba(56,189,248,0.08); border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted);">Cross-Platform / Security</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MILESTONES -->
-<section id="milestones">
+<!-- ARCHITECTURE & BEST PRACTICES -->
+<section id="architecture">
   <div class="container">
-    <span class="section-label">// career_timeline</span>
-    <h2 class="section-title">Milestones</h2>
-    <p class="section-sub">10 years of continuous growth — from UIKit to xcFrameworks to founding a startup.</p>
+    <span class="section-label">// engineering_practices</span>
+    <h2 class="section-title">Architecture & Best Practices</h2>
+    <p class="section-sub">Production-grade architectural patterns, modular design principles, and enterprise security standards followed across all iOS projects.</p>
 
-    <div class="milestone-list">
-      
-      <div class="milestone-item">
-        <div class="milestone-left">
-          <div class="milestone-year" style="color: #6b7fa3">2014</div>
-          <div class="milestone-icon" style="background: #6b7fa315; border: 2px solid #6b7fa340">🚀</div>
-          <div class="milestone-line"></div>
-        </div>
-        <div class="milestone-content">
-          <div class="milestone-title">Started iOS Career</div>
-          <p class="milestone-desc">Began professional iOS development with Objective-C, deep-dived into UIKit and Core frameworks.</p>
-        </div>
-      </div>
-      <div class="milestone-item">
-        <div class="milestone-left">
-          <div class="milestone-year" style="color: #34d399">2015</div>
-          <div class="milestone-icon" style="background: #34d39915; border: 2px solid #34d39940">🏦</div>
-          <div class="milestone-line"></div>
-        </div>
-        <div class="milestone-content">
-          <div class="milestone-title">Joined TransUnion — Banking Entry</div>
-          <p class="milestone-desc">First major banking client — built credit monitoring features and identity verification SDK for 1M+ users.</p>
-        </div>
-      </div>
-      <div class="milestone-item">
-        <div class="milestone-left">
-          <div class="milestone-year" style="color: #38bdf8">2017</div>
-          <div class="milestone-icon" style="background: #38bdf815; border: 2px solid #38bdf840">⚡</div>
-          <div class="milestone-line"></div>
-        </div>
-        <div class="milestone-content">
-          <div class="milestone-title">Swift Expert — Full Migration Lead</div>
-          <p class="milestone-desc">Led complete Swift migration for legacy Objective-C codebase. Zero regression, 30% performance improvement.</p>
-        </div>
-      </div>
-      <div class="milestone-item">
-        <div class="milestone-left">
-          <div class="milestone-year" style="color: #f59e0b">2018</div>
-          <div class="milestone-icon" style="background: #f59e0b15; border: 2px solid #f59e0b40">💳</div>
-          <div class="milestone-line"></div>
-        </div>
-        <div class="milestone-content">
-          <div class="milestone-title">Global Payments — Payment SDK Architect</div>
-          <p class="milestone-desc">Designed and built PCI-DSS compliant payment SDK. Apple Pay, NFC, and 3DS2 authentication for EU markets.</p>
+    <div class="arch-grid">
+
+      <!-- Architectural Patterns -->
+      <div class="arch-section">
+        <h3 class="arch-section-title"><span>🏗</span> Architectural Patterns</h3>
+        <div class="arch-list">
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.2);">📐</div>
+            <div class="arch-content">
+              <div class="arch-name">Clean Architecture</div>
+              <div class="arch-desc">Layered separation of concerns with clear dependency rules and testable business logic</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2);">🔄</div>
+            <div class="arch-content">
+              <div class="arch-name">MVVM & MVVM-C</div>
+              <div class="arch-desc">Model-View-ViewModel with Coordinator pattern for reactive UI and navigation decoupling</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2);">⚡</div>
+            <div class="arch-content">
+              <div class="arch-name">VIPER</div>
+              <div class="arch-desc">View-Interactor-Presenter-Entity-Router for modular, enterprise-scale applications</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.2);">🎯</div>
+            <div class="arch-content">
+              <div class="arch-name">Composable Architecture (TCA)</div>
+              <div class="arch-desc">Unidirectional data flow with composable reducers for SwiftUI applications</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2);">🔧</div>
+            <div class="arch-content">
+              <div class="arch-name">MVC, MVP</div>
+              <div class="arch-desc">Traditional patterns for rapid prototyping and legacy codebase maintenance</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="milestone-item">
-        <div class="milestone-left">
-          <div class="milestone-year" style="color: #a78bfa">2019</div>
-          <div class="milestone-icon" style="background: #a78bfa15; border: 2px solid #a78bfa40">📦</div>
-          <div class="milestone-line"></div>
-        </div>
-        <div class="milestone-content">
-          <div class="milestone-title">Published First Swift Package</div>
-          <p class="milestone-desc">Open-sourced an internal networking utility as a Swift Package — 200+ GitHub stars in the first month.</p>
-        </div>
-      </div>
-      <div class="milestone-item">
-        <div class="milestone-left">
-          <div class="milestone-year" style="color: #00aeef">2020</div>
-          <div class="milestone-icon" style="background: #00aeef15; border: 2px solid #00aeef40">🏅</div>
-          <div class="milestone-line"></div>
-        </div>
-        <div class="milestone-content">
-          <div class="milestone-title">Barclays — Senior Engineer</div>
-          <p class="milestone-desc">Joined Barclays as Senior iOS Engineer. Promoted to tech lead within 12 months, managing a team of 6.</p>
-        </div>
-      </div>
-      <div class="milestone-item">
-        <div class="milestone-left">
-          <div class="milestone-year" style="color: #38bdf8">2021</div>
-          <div class="milestone-icon" style="background: #38bdf815; border: 2px solid #38bdf840">🏗</div>
-          <div class="milestone-line"></div>
-        </div>
-        <div class="milestone-content">
-          <div class="milestone-title">Delivered xcFramework Architecture</div>
-          <p class="milestone-desc">Architected Barclays' modular xcFramework system — enabling 3 product teams to ship independently.</p>
-        </div>
-      </div>
-      <div class="milestone-item">
-        <div class="milestone-left">
-          <div class="milestone-year" style="color: #f87171">2022</div>
-          <div class="milestone-icon" style="background: #f8717115; border: 2px solid #f8717140">🔐</div>
-          <div class="milestone-line"></div>
-        </div>
-        <div class="milestone-content">
-          <div class="milestone-title">App Security Specialisation</div>
-          <p class="milestone-desc">Implemented SSL pinning, OWASP standards, and secure enclave usage across Barclays apps.</p>
+
+      <!-- Modular Design -->
+      <div class="arch-section">
+        <h3 class="arch-section-title"><span>📦</span> Modular Design</h3>
+        <div class="arch-list">
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.2);">🎁</div>
+            <div class="arch-content">
+              <div class="arch-name">Swift Package Manager (SPM)</div>
+              <div class="arch-desc">Every feature as an independent Swift Package — fully testable, reusable, and versionable</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2);">🔌</div>
+            <div class="arch-content">
+              <div class="arch-name">Feature Independence</div>
+              <div class="arch-desc">Zero inter-feature dependencies — each module ships independently with isolated testing</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2);">✅</div>
+            <div class="arch-content">
+              <div class="arch-name">100% Testability</div>
+              <div class="arch-desc">Protocol-driven design with dependency injection for complete unit & integration test coverage</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.2);">♻️</div>
+            <div class="arch-content">
+              <div class="arch-name">Retry Mechanism</div>
+              <div class="arch-desc">Exponential backoff with circuit breaker pattern for resilient network operations</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="milestone-item">
-        <div class="milestone-left">
-          <div class="milestone-year" style="color: #f59e0b">2023</div>
-          <div class="milestone-icon" style="background: #f59e0b15; border: 2px solid #f59e0b40">🌟</div>
-          <div class="milestone-line"></div>
-        </div>
-        <div class="milestone-content">
-          <div class="milestone-title">Founded Onvira Technologies</div>
-          <p class="milestone-desc">Left corporate employment to found Onvira Technologies — a product-based iOS startup. 5 MVPs in year one.</p>
+
+      <!-- Security Standards -->
+      <div class="arch-section">
+        <h3 class="arch-section-title"><span>🔐</span> Security Standards</h3>
+        <div class="arch-list">
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2);">🔒</div>
+            <div class="arch-content">
+              <div class="arch-name">SSL Pinning</div>
+              <div class="arch-desc">Certificate and public key pinning to prevent man-in-the-middle attacks</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2);">🛡</div>
+            <div class="arch-content">
+              <div class="arch-name">TLS 1.2 / 1.3</div>
+              <div class="arch-desc">Modern transport layer security protocols with strong cipher suites</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2);">⚠️</div>
+            <div class="arch-content">
+              <div class="arch-name">OWASP Standards</div>
+              <div class="arch-desc">Adherence to OWASP Mobile Top 10 security best practices in all code</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2);">🔑</div>
+            <div class="arch-content">
+              <div class="arch-name">Keychain & Secure Enclave</div>
+              <div class="arch-desc">Hardware-backed secure storage for sensitive data with biometric protection</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="milestone-item">
-        <div class="milestone-left">
-          <div class="milestone-year" style="color: #34d399">2024</div>
-          <div class="milestone-icon" style="background: #34d39915; border: 2px solid #34d39940">📱</div>
-          
-        </div>
-        <div class="milestone-content">
-          <div class="milestone-title">SwiftUI-First Product Studio</div>
-          <p class="milestone-desc">Onvira expanded into HealthTech, Security, and Payments verticals. Recognised SwiftUI-first iOS studio.</p>
+
+      <!-- Data Persistence -->
+      <div class="arch-section">
+        <h3 class="arch-section-title"><span>💾</span> Data Persistence</h3>
+        <div class="arch-list">
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.2);">📂</div>
+            <div class="arch-content">
+              <div class="arch-name">Offline-First Architecture</div>
+              <div class="arch-desc">Local-store-first policy — app functions seamlessly offline with background sync</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2);">⚡</div>
+            <div class="arch-content">
+              <div class="arch-name">Multi-Layer Caching</div>
+              <div class="arch-desc">Memory, disk, and database caching with intelligent invalidation strategies</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2);">🗄</div>
+            <div class="arch-content">
+              <div class="arch-name">Core Data / Realm / SQLite</div>
+              <div class="arch-desc">Persistent storage with migration support and efficient query optimization</div>
+            </div>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon" style="background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.2);">🔄</div>
+            <div class="arch-content">
+              <div class="arch-name">Sync Strategies</div>
+              <div class="arch-desc">Conflict resolution with optimistic updates and server-reconciliation patterns</div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Clean Architecture Diagram -->
+      <div class="arch-section arch-full-width">
+        <h3 class="arch-section-title"><span>🎯</span> Scalable Modular Clean Architecture (MVVM + Repository Pattern)</h3>
+
+        <!-- Main Architecture Diagram -->
+        <div class="arch-diagram">
+          <div class="diagram-title">CLEAN ARCHITECTURE LAYERS</div>
+
+          <div style="display: grid; grid-template-columns: 3fr 1fr; gap: 2rem; align-items: start;">
+
+            <!-- Left: Layer Diagram -->
+            <div class="diagram-flow">
+
+              <!-- Presentation Layer -->
+              <div class="diagram-row">
+                <div class="diagram-box" style="background: rgba(56,189,248,0.12); border: 2px solid #38bdf8; min-width: 280px;">
+                  <div style="font-weight: 700; margin-bottom: 8px; color: #38bdf8; font-size: 14px;">Presentation Layer</div>
+                  <div style="font-size: 11px; color: var(--muted); line-height: 1.6; text-align: left; padding-left: 8px;">
+                    ├─ Views<br>
+                    └─ ViewModels
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dependencies Arrow -->
+              <div style="text-align: center; margin: 0.5rem 0;">
+                <div class="diagram-arrow" style="font-size: 20px; color: #38bdf8;">↓</div>
+                <div style="font-size: 10px; font-weight: 600; color: #38bdf8; font-family: 'JetBrains Mono', monospace;">Dependencies</div>
+              </div>
+
+              <!-- Domain Layer (CORE) -->
+              <div class="diagram-row">
+                <div class="diagram-box highlight" style="background: rgba(52,211,153,0.15); border: 3px solid #34d399; min-width: 280px; box-shadow: 0 4px 12px rgba(52,211,153,0.2);">
+                  <div style="font-weight: 700; margin-bottom: 8px; color: #34d399; font-size: 14px;">Domain Layer (CORE) ⭐</div>
+                  <div style="font-size: 11px; color: var(--muted); line-height: 1.6; text-align: left; padding-left: 8px;">
+                    ├─ Use Cases<br>
+                    ├─ Entities<br>
+                    └─ Repository Interfaces
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dependencies Arrow (Up from Data) -->
+              <div style="text-align: center; margin: 0.5rem 0;">
+                <div class="diagram-arrow" style="font-size: 20px; color: #f59e0b;">↑</div>
+                <div style="font-size: 10px; font-weight: 600; color: #f59e0b; font-family: 'JetBrains Mono', monospace;">Dependencies</div>
+              </div>
+
+              <!-- Data Layer -->
+              <div class="diagram-row">
+                <div class="diagram-box" style="background: rgba(245,158,11,0.12); border: 2px solid #f59e0b; min-width: 280px;">
+                  <div style="font-weight: 700; margin-bottom: 8px; color: #f59e0b; font-size: 14px;">Data Layer</div>
+                  <div style="font-size: 11px; color: var(--muted); line-height: 1.6; text-align: left; padding-left: 8px;">
+                    ├─ Repository Implementations<br>
+                    ├─ Remote Data Sources<br>
+                    ├─ Local Data Sources<br>
+                    ├─ DTOs<br>
+                    └─ Mappers
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dependencies Arrow -->
+              <div style="text-align: center; margin: 0.5rem 0;">
+                <div class="diagram-arrow" style="font-size: 20px; color: #ef4444;">↓</div>
+                <div style="font-size: 10px; font-weight: 600; color: #ef4444; font-family: 'JetBrains Mono', monospace;">Dependencies</div>
+              </div>
+
+              <!-- Infrastructure Layer -->
+              <div class="diagram-row">
+                <div class="diagram-box" style="background: rgba(239,68,68,0.12); border: 2px solid #ef4444; min-width: 280px;">
+                  <div style="font-weight: 700; margin-bottom: 8px; color: #ef4444; font-size: 14px;">Infrastructure Layer</div>
+                  <div style="font-size: 11px; color: var(--muted); line-height: 1.6; text-align: left; padding-left: 8px;">
+                    ├─ URLSession<br>
+                    ├─ Core Data<br>
+                    ├─ Keychain<br>
+                    └─ Third-party SDKs
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right: Side Note -->
+            <div style="background: rgba(52,211,153,0.08); border-left: 4px solid #34d399; padding: 1.25rem; border-radius: 8px;">
+              <div style="font-size: 12px; font-weight: 700; color: #34d399; margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace;">💡 KEY PRINCIPLE</div>
+              <p style="font-size: 11px; color: var(--muted); line-height: 1.7; margin: 0;">
+                <strong style="color: var(--text);">Business rules live in Domain and are independent of frameworks.</strong>
+                <br><br>
+                Domain has <strong style="color: #34d399;">ZERO dependencies</strong> on outer layers, making it:
+                <br>• 100% testable
+                <br>• Framework-agnostic
+                <br>• Highly maintainable
+                <br>• Easily portable
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Modular Architecture Visualization -->
+        <div class="arch-diagram" style="margin-top: 2rem;">
+          <div class="diagram-title">MODULAR FEATURE ARCHITECTURE</div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+
+            <!-- Auth Module -->
+            <div style="background: var(--card); border: 2px solid rgba(56,189,248,0.2); border-radius: 10px; padding: 1rem;">
+              <div style="font-weight: 700; color: #38bdf8; margin-bottom: 0.75rem; text-align: center; font-size: 13px;">🔐 Auth Module</div>
+              <div style="font-size: 10px; color: var(--muted); line-height: 1.8; text-align: center;">
+                Presentation<br>
+                <span style="color: #38bdf8;">↓</span><br>
+                <strong style="color: #34d399;">Domain</strong><br>
+                <span style="color: #f59e0b;">↑</span><br>
+                Data
+              </div>
+            </div>
+
+            <!-- Home Module -->
+            <div style="background: var(--card); border: 2px solid rgba(52,211,153,0.2); border-radius: 10px; padding: 1rem;">
+              <div style="font-weight: 700; color: #34d399; margin-bottom: 0.75rem; text-align: center; font-size: 13px;">🏠 Home Module</div>
+              <div style="font-size: 10px; color: var(--muted); line-height: 1.8; text-align: center;">
+                Presentation<br>
+                <span style="color: #38bdf8;">↓</span><br>
+                <strong style="color: #34d399;">Domain</strong><br>
+                <span style="color: #f59e0b;">↑</span><br>
+                Data
+              </div>
+            </div>
+
+            <!-- Profile Module -->
+            <div style="background: var(--card); border: 2px solid rgba(245,158,11,0.2); border-radius: 10px; padding: 1rem;">
+              <div style="font-weight: 700; color: #f59e0b; margin-bottom: 0.75rem; text-align: center; font-size: 13px;">👤 Profile Module</div>
+              <div style="font-size: 10px; color: var(--muted); line-height: 1.8; text-align: center;">
+                Presentation<br>
+                <span style="color: #38bdf8;">↓</span><br>
+                <strong style="color: #34d399;">Domain</strong><br>
+                <span style="color: #f59e0b;">↑</span><br>
+                Data
+              </div>
+            </div>
+
+          </div>
+          <p style="font-size: 11px; color: var(--muted); margin-top: 1rem; text-align: center; line-height: 1.6;">
+            Each feature module follows the same clean architecture pattern internally — <strong style="color: var(--text);">fully independent, testable, and reusable</strong>
+          </p>
+        </div>
+
+        <p style="font-size: 12px; color: var(--muted); margin-top: 1.5rem; text-align: center; line-height: 1.6;">
+          <strong style="color: #34d399;">✓ Scalable</strong> • <strong style="color: #38bdf8;">✓ Testable</strong> • <strong style="color: #f59e0b;">✓ Maintainable</strong> • <strong style="color: #ef4444;">✓ Framework-Independent</strong>
+        </p>
+      </div>
+
+      <!-- Enterprise Modular Architecture Diagram -->
+      <div class="arch-section arch-full-width">
+        <h3 class="arch-section-title"><span>📦</span> Enterprise iOS Modular Architecture (Swift Packages + Clean Architecture + MVVM)</h3>
+
+        <!-- Main App Target -->
+        <div class="arch-diagram">
+          <div class="diagram-title">TOP LEVEL - COMPOSITION ROOT</div>
+          <div class="diagram-row" style="margin: 1rem 0;">
+            <div class="diagram-box highlight" style="background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); color: white; border: none; min-width: 320px; box-shadow: 0 4px 12px rgba(99,102,241,0.3);">
+              <div style="font-weight: 700; font-size: 15px; margin-bottom: 6px;">Main App Target</div>
+              <div style="font-size: 11px; opacity: 0.9;">Dependency Injection • App Configuration • Navigation / Composition Root</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Modules -->
+        <div class="arch-diagram" style="margin-top: 1.5rem;">
+          <div class="diagram-title">FEATURE MODULES (Independent Swift Packages)</div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1rem 0;">
+
+            <!-- Auth Module -->
+            <div style="background: var(--card); border: 2px solid rgba(56,189,248,0.3); border-radius: 12px; padding: 1rem;">
+              <div style="font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem; text-align: center; font-size: 13px;">🔐 Auth</div>
+              <div style="font-size: 9px; color: var(--muted); line-height: 1.6;">
+                <strong style="color: #38bdf8;">Presentation</strong><br>
+                • SwiftUI Views<br>
+                • ViewModels<br>
+                <span style="color: #38bdf8; font-size: 11px;">↓</span><br>
+                <strong style="color: #34d399;">Domain</strong><br>
+                • Use Cases<br>
+                • Entities<br>
+                • Repository Protocols<br>
+                <span style="color: #f59e0b; font-size: 11px;">↑</span><br>
+                <strong style="color: #f59e0b;">Data</strong><br>
+                • Repository Impl<br>
+                • Remote/Local Sources<br>
+                • DTOs • Mappers
+              </div>
+            </div>
+
+            <!-- Dashboard Module -->
+            <div style="background: var(--card); border: 2px solid rgba(52,211,153,0.3); border-radius: 12px; padding: 1rem;">
+              <div style="font-weight: 700; color: #34d399; margin-bottom: 0.5rem; text-align: center; font-size: 13px;">📊 Dashboard</div>
+              <div style="font-size: 9px; color: var(--muted); line-height: 1.6;">
+                <strong style="color: #38bdf8;">Presentation</strong><br>
+                • SwiftUI Views<br>
+                • ViewModels<br>
+                <span style="color: #38bdf8; font-size: 11px;">↓</span><br>
+                <strong style="color: #34d399;">Domain</strong><br>
+                • Use Cases<br>
+                • Entities<br>
+                • Repository Protocols<br>
+                <span style="color: #f59e0b; font-size: 11px;">↑</span><br>
+                <strong style="color: #f59e0b;">Data</strong><br>
+                • Repository Impl<br>
+                • Remote/Local Sources<br>
+                • DTOs • Mappers
+              </div>
+            </div>
+
+            <!-- Payments Module -->
+            <div style="background: var(--card); border: 2px solid rgba(245,158,11,0.3); border-radius: 12px; padding: 1rem;">
+              <div style="font-weight: 700; color: #f59e0b; margin-bottom: 0.5rem; text-align: center; font-size: 13px;">💳 Payments</div>
+              <div style="font-size: 9px; color: var(--muted); line-height: 1.6;">
+                <strong style="color: #38bdf8;">Presentation</strong><br>
+                • SwiftUI Views<br>
+                • ViewModels<br>
+                <span style="color: #38bdf8; font-size: 11px;">↓</span><br>
+                <strong style="color: #34d399;">Domain</strong><br>
+                • Use Cases<br>
+                • Entities<br>
+                • Repository Protocols<br>
+                <span style="color: #f59e0b; font-size: 11px;">↑</span><br>
+                <strong style="color: #f59e0b;">Data</strong><br>
+                • Repository Impl<br>
+                • Remote/Local Sources<br>
+                • DTOs • Mappers
+              </div>
+            </div>
+
+            <!-- Profile Module -->
+            <div style="background: var(--card); border: 2px solid rgba(167,139,250,0.3); border-radius: 12px; padding: 1rem;">
+              <div style="font-weight: 700; color: #a78bfa; margin-bottom: 0.5rem; text-align: center; font-size: 13px;">👤 Profile</div>
+              <div style="font-size: 9px; color: var(--muted); line-height: 1.6;">
+                <strong style="color: #38bdf8;">Presentation</strong><br>
+                • SwiftUI Views<br>
+                • ViewModels<br>
+                <span style="color: #38bdf8; font-size: 11px;">↓</span><br>
+                <strong style="color: #34d399;">Domain</strong><br>
+                • Use Cases<br>
+                • Entities<br>
+                • Repository Protocols<br>
+                <span style="color: #f59e0b; font-size: 11px;">↑</span><br>
+                <strong style="color: #f59e0b;">Data</strong><br>
+                • Repository Impl<br>
+                • Remote/Local Sources<br>
+                • DTOs • Mappers
+              </div>
+            </div>
+
+            <!-- Settings Module -->
+            <div style="background: var(--card); border: 2px solid rgba(99,102,241,0.3); border-radius: 12px; padding: 1rem;">
+              <div style="font-weight: 700; color: #6366f1; margin-bottom: 0.5rem; text-align: center; font-size: 13px;">⚙️ Settings</div>
+              <div style="font-size: 9px; color: var(--muted); line-height: 1.6;">
+                <strong style="color: #38bdf8;">Presentation</strong><br>
+                • SwiftUI Views<br>
+                • ViewModels<br>
+                <span style="color: #38bdf8; font-size: 11px;">↓</span><br>
+                <strong style="color: #34d399;">Domain</strong><br>
+                • Use Cases<br>
+                • Entities<br>
+                • Repository Protocols<br>
+                <span style="color: #f59e0b; font-size: 11px;">↑</span><br>
+                <strong style="color: #f59e0b;">Data</strong><br>
+                • Repository Impl<br>
+                • Remote/Local Sources<br>
+                • DTOs • Mappers
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Feature Independence Note -->
+          <div style="background: rgba(239,68,68,0.08); border: 2px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 1rem; margin-top: 1rem;">
+            <div style="font-size: 12px; font-weight: 700; color: #ef4444; margin-bottom: 0.5rem; font-family: 'JetBrains Mono', monospace;">⚠️ FEATURE INDEPENDENCE RULE</div>
+            <div style="font-size: 11px; color: var(--muted); line-height: 1.6;">
+              <span style="color: #ef4444;">❌ Auth → Payments</span> &nbsp;
+              <span style="color: #ef4444;">❌ Dashboard → Profile</span><br>
+              <span style="color: #34d399;">✅ Communication only through shared abstractions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shared Packages -->
+        <div class="arch-diagram" style="margin-top: 1.5rem;">
+          <div class="diagram-title">SHARED PACKAGES (Reusable Across Features)</div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1rem 0;">
+
+            <div style="background: rgba(167,139,250,0.1); border: 2px solid #a78bfa; border-radius: 10px; padding: 1rem;">
+              <div style="font-weight: 700; color: #a78bfa; margin-bottom: 0.5rem; font-size: 12px;">🎯 Core Domain</div>
+              <div style="font-size: 10px; color: var(--muted); line-height: 1.5;">
+                • Shared Entities<br>
+                • Shared Protocols<br>
+                • Common Use Cases
+              </div>
+            </div>
+
+            <div style="background: rgba(167,139,250,0.1); border: 2px solid #a78bfa; border-radius: 10px; padding: 1rem;">
+              <div style="font-weight: 700; color: #a78bfa; margin-bottom: 0.5rem; font-size: 12px;">🎨 Design System</div>
+              <div style="font-size: 10px; color: var(--muted); line-height: 1.5;">
+                • Reusable UI Components<br>
+                • Theme<br>
+                • Typography<br>
+                • Colors
+              </div>
+            </div>
+
+            <div style="background: rgba(167,139,250,0.1); border: 2px solid #a78bfa; border-radius: 10px; padding: 1rem;">
+              <div style="font-weight: 700; color: #a78bfa; margin-bottom: 0.5rem; font-size: 12px;">🌐 Networking</div>
+              <div style="font-size: 10px; color: var(--muted); line-height: 1.5;">
+                • API Client<br>
+                • Request Builders<br>
+                • Interceptors
+              </div>
+            </div>
+
+            <div style="background: rgba(167,139,250,0.1); border: 2px solid #a78bfa; border-radius: 10px; padding: 1rem;">
+              <div style="font-weight: 700; color: #a78bfa; margin-bottom: 0.5rem; font-size: 12px;">📊 Analytics</div>
+              <div style="font-size: 10px; color: var(--muted); line-height: 1.5;">
+                • Event Tracking<br>
+                • Logging
+              </div>
+            </div>
+
+            <div style="background: rgba(167,139,250,0.1); border: 2px solid #a78bfa; border-radius: 10px; padding: 1rem;">
+              <div style="font-weight: 700; color: #a78bfa; margin-bottom: 0.5rem; font-size: 12px;">💾 Storage</div>
+              <div style="font-size: 10px; color: var(--muted); line-height: 1.5;">
+                • Local Persistence<br>
+                • Secure Storage
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Infrastructure -->
+        <div class="arch-diagram" style="margin-top: 1.5rem;">
+          <div class="diagram-title">INFRASTRUCTURE (Framework Details)</div>
+
+          <div class="diagram-row" style="margin: 1rem 0;">
+            <div class="diagram-box" style="background: rgba(239,68,68,0.12); border: 2px solid #ef4444; min-width: 100%; padding: 1.25rem;">
+              <div style="font-weight: 700; color: #ef4444; margin-bottom: 0.75rem; font-size: 13px;">Infrastructure Layer</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; font-size: 11px; color: var(--muted);">
+                <span>• URLSession</span>
+                <span>• Core Data</span>
+                <span>• Keychain</span>
+                <span>• Third-party SDKs</span>
+                <span>• Push Notifications</span>
+                <span>• Crash Reporting</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Architecture Rules -->
+        <div style="background: rgba(52,211,153,0.08); border: 2px solid #34d399; border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem;">
+          <div style="font-size: 13px; font-weight: 700; color: #34d399; margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace;">📐 ARCHITECTURE RULES</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; font-size: 11px; color: var(--muted); line-height: 1.7;">
+            <div>
+              ✓ Dependencies point inward<br>
+              ✓ Domain has zero framework dependencies<br>
+              ✓ Features are independently testable
+            </div>
+            <div>
+              ✓ Features can be developed by separate teams<br>
+              ✓ Shared packages contain reusable functionality only<br>
+              ✓ Infrastructure never contains business logic
+            </div>
+          </div>
+        </div>
+
+        <!-- Benefits Footer -->
+        <div style="background: linear-gradient(135deg, rgba(56,189,248,0.1) 0%, rgba(52,211,153,0.1) 100%); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem;">
+          <div style="font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 1rem; text-align: center; font-family: 'JetBrains Mono', monospace;">🚀 ENTERPRISE BENEFITS</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; font-size: 11px; color: var(--muted); text-align: center;">
+            <div><strong style="color: #38bdf8;">✓</strong> Independent Feature Development</div>
+            <div><strong style="color: #34d399;">✓</strong> Faster Builds</div>
+            <div><strong style="color: #f59e0b;">✓</strong> Better Testability</div>
+            <div><strong style="color: #a78bfa;">✓</strong> Team Scalability</div>
+            <div><strong style="color: #6366f1;">✓</strong> Reusability</div>
+            <div><strong style="color: #ef4444;">✓</strong> Reduced Coupling</div>
+            <div><strong style="color: #34d399;">✓</strong> Easier Maintenance</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <span class="section-label">// academic_background</span>
+    <h2 class="section-title">Education</h2>
+    <p class="section-sub">Strong academic foundation in computer science and specialized training in mobile computing.</p>
+
+    <div class="edu-grid">
+
+      <!-- B.E. Computer Science -->
+      <div class="edu-card">
+        <div class="edu-header">
+          <div class="edu-icon" style="background: linear-gradient(135deg, #6366f115 0%, #4f46e515 100%); border: 2px solid #6366f130;">🎓</div>
+          <div class="edu-info">
+            <div class="edu-degree">Bachelor of Engineering (B.E.)<br>Computer Science</div>
+            <div class="edu-institute">RITS Bhopal, Madhya Pradesh</div>
+            <div class="edu-duration">2008 - 2012 · 4 Years</div>
+          </div>
+        </div>
+        <p class="edu-desc">Completed undergraduate degree in Computer Science & Engineering with strong foundation in programming, algorithms, data structures, and software development principles.</p>
+        <div class="edu-highlights">
+          <span class="edu-highlight">Computer Science</span>
+          <span class="edu-highlight">Programming</span>
+          <span class="edu-highlight">Algorithms</span>
+          <span class="edu-highlight">Data Structures</span>
+          <span class="edu-highlight">Engineering</span>
+        </div>
+      </div>
+
+      <!-- PG Diploma CDAC -->
+      <div class="edu-card">
+        <div class="edu-header">
+          <div class="edu-icon" style="background: linear-gradient(135deg, #6366f115 0%, #4f46e515 100%); border: 2px solid #6366f130;">🎓</div>
+          <div class="edu-info">
+            <div class="edu-degree">PG Diploma<br>Wireless & Mobile Computing</div>
+            <div class="edu-institute">CDAC Sunbeam, Pune</div>
+            <div class="edu-duration">Aug 2012 - Dec 2013 · 1.5 Years</div>
+          </div>
+        </div>
+        <p class="edu-desc">Specialized post-graduate certification in mobile application development and wireless technologies from CDAC (Centre for Development of Advanced Computing), India's premier R&D organization.</p>
+        <div class="edu-highlights">
+          <span class="edu-highlight">Mobile Development</span>
+          <span class="edu-highlight">Wireless Tech</span>
+          <span class="edu-highlight">Android</span>
+          <span class="edu-highlight">iOS</span>
+          <span class="edu-highlight">CDAC Certified</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GRAPHS / ANALYTICS -->
+<section id="graphs">
+  <div class="container">
+    <span class="section-label">// career_analytics</span>
+    <h2 class="section-title">Career Analytics</h2>
+    <p class="section-sub">Data-driven insights into career stability, growth trajectory, and skill evolution over 10+ years.</p>
+
+    <div class="graph-grid">
+
+      <!-- Career Stability Graph -->
+      <div class="graph-card">
+        <h3 class="graph-title">📊 Career Stability</h3>
+        <p class="graph-subtitle">Tenure at each organization (2015 - 2025)</p>
+
+        <div class="stability-bar">
+          <div class="stability-item">
+            <span class="stability-label">Capgemini (2020-25)</span>
+            <div class="stability-track">
+              <div class="stability-fill" style="width: 100%; background: linear-gradient(90deg, #00aeef 0%, #0090c9 100%);">5.5Y</div>
+            </div>
+            <span class="stability-duration" style="color: #00aeef">5.5 Yrs</span>
+          </div>
+
+          <div class="stability-item">
+            <span class="stability-label">Capgemini (2016-19)</span>
+            <div class="stability-track">
+              <div class="stability-fill" style="width: 58%; background: linear-gradient(90deg, #00aeef 0%, #0090c9 100%);">2.7Y</div>
+            </div>
+            <span class="stability-duration" style="color: #00aeef">2.7 Yrs</span>
+          </div>
+
+          <div class="stability-item">
+            <span class="stability-label">Johnson Controls</span>
+            <div class="stability-track">
+              <div class="stability-fill" style="width: 24%; background: linear-gradient(90deg, #0066b3 0%, #004a86 100%);">1.1Y</div>
+            </div>
+            <span class="stability-duration" style="color: #0066b3">1.1 Yrs</span>
+          </div>
+
+          <div class="stability-item">
+            <span class="stability-label">Kiwi Technologies</span>
+            <div class="stability-track">
+              <div class="stability-fill" style="width: 13%; background: linear-gradient(90deg, #a78bfa 0%, #8b5cf6 100%);">7M</div>
+            </div>
+            <span class="stability-duration" style="color: #a78bfa">7 Mos</span>
+          </div>
+
+          <div class="stability-item">
+            <span class="stability-label">TechAhead Software</span>
+            <div class="stability-track">
+              <div class="stability-fill" style="width: 5%; background: linear-gradient(90deg, #a78bfa 0%, #8b5cf6 100%);">3M</div>
+            </div>
+            <span class="stability-duration" style="color: #a78bfa">3 Mos</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; padding: 12px; background: rgba(56,189,248,0.05); border-left: 3px solid #38bdf8; border-radius: 6px;">
+          <p style="font-size: 12px; color: var(--muted); line-height: 1.6; margin: 0;">
+            <strong style="color: #38bdf8">Insight:</strong> 8.2+ years across two stints at Capgemini demonstrates strong organizational loyalty and sustained value delivery in enterprise banking projects.
+          </p>
+        </div>
+      </div>
+
+      <!-- Learning & Designation Growth -->
+      <div class="graph-card">
+        <h3 class="graph-title">📈 Learning & Designation Growth</h3>
+        <p class="graph-subtitle">Career progression and skill evolution</p>
+
+        <div class="growth-timeline">
+          <div class="growth-item">
+            <div class="growth-dot" style="background: #a78bfa15; border-color: #a78bfa">📱</div>
+            <div class="growth-content">
+              <div class="growth-role">Mobile Application Developer (Multiple Startups)</div>
+              <div class="growth-year">2013 - Jul 2015</div>
+              <div class="growth-skills">
+                <span class="growth-skill">Android</span>
+                <span class="growth-skill">Titanium</span>
+                <span class="growth-skill">iOS</span>
+                <span class="growth-skill">Objective-C</span>
+                <span class="growth-skill">UIKit</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="growth-item">
+            <div class="growth-dot" style="background: #38bdf815; border-color: #38bdf8">💼</div>
+            <div class="growth-content">
+              <div class="growth-role">Associate Consultant (Capgemini)</div>
+              <div class="growth-year">Aug 2016 - Apr 2019</div>
+              <div class="growth-skills">
+                <span class="growth-skill">Swift</span>
+                <span class="growth-skill">CocoaPods</span>
+                <span class="growth-skill">PCI-DSS</span>
+                <span class="growth-skill">SDK Dev</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="growth-item">
+            <div class="growth-dot" style="background: #f59e0b15; border-color: #f59e0b">🚀</div>
+            <div class="growth-content">
+              <div class="growth-role">Senior iOS Developer (Johnson Controls)</div>
+              <div class="growth-year">Apr 2019 - May 2020</div>
+              <div class="growth-skills">
+                <span class="growth-skill">IoT</span>
+                <span class="growth-skill">Bluetooth</span>
+                <span class="growth-skill">R&D Lead</span>
+                <span class="growth-skill">Product Owner</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="growth-item">
+            <div class="growth-dot" style="background: #00aeef15; border-color: #00aeef">🏗</div>
+            <div class="growth-content">
+              <div class="growth-role">Consultant (Lead) (Capgemini)</div>
+              <div class="growth-year">Jun 2020 - 2022</div>
+              <div class="growth-skills">
+                <span class="growth-skill">xcFramework</span>
+                <span class="growth-skill">Architecture</span>
+                <span class="growth-skill">Team Lead</span>
+                <span class="growth-skill">SSL Pinning</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="growth-item">
+            <div class="growth-dot" style="background: #34d39915; border-color: #34d399">🎯</div>
+            <div class="growth-content">
+              <div class="growth-role">Senior Consultant (Lead) / People Manager (Capgemini)</div>
+              <div class="growth-year">2022 - Nov 2025</div>
+              <div class="growth-skills">
+                <span class="growth-skill">KYC/AML</span>
+                <span class="growth-skill">Leadership</span>
+                <span class="growth-skill">Team Mgmt</span>
+                <span class="growth-skill">Security</span>
+                <span class="growth-skill">Mentorship</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="growth-item">
+            <div class="growth-dot" style="background: #f59e0b15; border-color: #f59e0b">🌟</div>
+            <div class="growth-content">
+              <div class="growth-role">Founder & Director (Onvira Technologies)</div>
+              <div class="growth-year">2024 - Present</div>
+              <div class="growth-skills">
+                <span class="growth-skill">SwiftUI</span>
+                <span class="growth-skill">Product</span>
+                <span class="growth-skill">Startup</span>
+                <span class="growth-skill">End-to-End</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; padding: 12px; background: rgba(52,211,153,0.05); border-left: 3px solid #34d399; border-radius: 6px;">
+          <p style="font-size: 12px; color: var(--muted); line-height: 1.6; margin: 0;">
+            <strong style="color: #34d399">Growth Path:</strong> From UIKit fundamentals to xcFramework architecture to founding a SwiftUI-first product studio — continuous upskilling and role evolution.
+          </p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -732,7 +1608,7 @@
   <div class="container">
     <span class="section-label">// get_in_touch</span>
     <h2 class="section-title" style="text-align: center">Let's Connect</h2>
-    <p style="font-size: 15px; color: var(--muted); text-align: center; margin-bottom: 3rem;">Open to senior iOS engineering roles, banking &amp; fintech consulting, and Swift framework architecture opportunities.</p>
+    <p style="font-size: 15px; color: var(--muted); text-align: center; margin-bottom: 3rem;">Open to iOS development, mobile architecture, technical leadership, product management, and consulting opportunities in banking &amp; fintech.</p>
 
     <div class="contact-grid">
       <div>
@@ -741,14 +1617,14 @@
           <span class="contact-icon">✉</span>
           <div>
             <div class="contact-label">Email</div>
-            <a href="mailto:your@email.com" class="contact-val" style="color: #38bdf8">your@email.com</a>
+            <a href="mailto:anurag_android@hotmail.com" class="contact-val" style="color: #38bdf8">anurag_android@hotmail.com</a>
           </div>
         </div>
         <div class="contact-item">
           <span class="contact-icon">💼</span>
           <div>
             <div class="contact-label">LinkedIn</div>
-            <a href="https://linkedin.com" target="_blank" class="contact-val" style="color: #0ea5e9">linkedin.com/in/yourprofile</a>
+            <a href="https://www.linkedin.com/in/anurag1989/" target="_blank" class="contact-val" style="color: #0ea5e9">linkedin.com/in/anurag1989</a>
           </div>
         </div>
         <div class="contact-item">
@@ -762,38 +1638,38 @@
           <span class="contact-icon">📍</span>
           <div>
             <div class="contact-label">Location</div>
-            <span class="contact-val">United Kingdom</span>
+            <span class="contact-val">India</span>
           </div>
         </div>
       </div>
       <div>
         <h3 style="font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem">Available For</h3>
-        
+
         <div class="avail-item" style="border: 1px solid rgba(52,211,153,0.12)">
           <span class="avail-dot" style="background: #34d399; box-shadow: 0 0 6px #34d39980"></span>
-          <span class="avail-label" style="color: #e2e8f0">Senior iOS Engineering</span>
-        </div>
-        <div class="avail-item" style="border: 1px solid rgba(52,211,153,0.12)">
-          <span class="avail-dot" style="background: #34d399; box-shadow: 0 0 6px #34d39980"></span>
-          <span class="avail-label" style="color: #e2e8f0">Framework / SDK Architecture</span>
+          <span class="avail-label" style="color: var(--text)">iOS Developer</span>
         </div>
         <div class="avail-item" style="border: 1px solid rgba(52,211,153,0.12)">
           <span class="avail-dot" style="background: #34d399; box-shadow: 0 0 6px #34d39980"></span>
-          <span class="avail-label" style="color: #e2e8f0">Banking & FinTech Consulting</span>
+          <span class="avail-label" style="color: var(--text)">Mobile Solution Architect</span>
         </div>
         <div class="avail-item" style="border: 1px solid rgba(52,211,153,0.12)">
           <span class="avail-dot" style="background: #34d399; box-shadow: 0 0 6px #34d39980"></span>
-          <span class="avail-label" style="color: #e2e8f0">Swift Package Development</span>
+          <span class="avail-label" style="color: var(--text)">Technical Lead</span>
         </div>
         <div class="avail-item" style="border: 1px solid rgba(52,211,153,0.12)">
           <span class="avail-dot" style="background: #34d399; box-shadow: 0 0 6px #34d39980"></span>
-          <span class="avail-label" style="color: #e2e8f0">Technical Leadership</span>
+          <span class="avail-label" style="color: var(--text)">Product Manager</span>
         </div>
-        <div class="avail-item" style="border: 1px solid rgba(56,189,248,0.06)">
-          <span class="avail-dot" style="background: #3a4a63; "></span>
-          <span class="avail-label" style="color: #3a4a63">Android / Cross-platform</span>
+        <div class="avail-item" style="border: 1px solid rgba(52,211,153,0.12)">
+          <span class="avail-dot" style="background: #34d399; box-shadow: 0 0 6px #34d39980"></span>
+          <span class="avail-label" style="color: var(--text)">Technical Manager</span>
         </div>
-        <a href="mailto:your@email.com" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 1.25rem; padding: 14px 24px; background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.3); border-radius: 10px; color: #38bdf8; text-decoration: none; font-size: 14px; font-weight: 600; transition: all 0.2s">✉ Send a Message</a>
+        <div class="avail-item" style="border: 1px solid rgba(52,211,153,0.12)">
+          <span class="avail-dot" style="background: #34d399; box-shadow: 0 0 6px #34d39980"></span>
+          <span class="avail-label" style="color: var(--text)">Consultant</span>
+        </div>
+        <a href="mailto:anurag_android@hotmail.com" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 1.25rem; padding: 14px 24px; background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.3); border-radius: 10px; color: #38bdf8; text-decoration: none; font-size: 14px; font-weight: 600; transition: all 0.2s">✉ Send a Message</a>
       </div>
     </div>
 
@@ -804,6 +1680,39 @@
     </div>
   </div>
 </section>
+
+<script>
+  // Theme toggle functionality
+  function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeButton(newTheme);
+  }
+
+  function updateThemeButton(theme) {
+    const icon = document.getElementById('themeIcon');
+    const text = document.getElementById('themeText');
+
+    if (theme === 'light') {
+      icon.textContent = '☀️';
+      text.textContent = 'Light';
+    } else {
+      icon.textContent = '🌙';
+      text.textContent = 'Dark';
+    }
+  }
+
+  // Load saved theme on page load
+  (function() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeButton(savedTheme);
+  })();
+</script>
 
 </body>
 </html>
